@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
 import unittest
 
@@ -15,15 +16,21 @@ class CustomItemCheckoutTest(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
         self.driver.get(base_url)
-    
-    def tests_custom_check_out(self):
+        
         try:
             splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
-        
-        self.driver.find_element_by_id("add-customization").click()
+    
+    def tests_custom_check_out(self):
+        # add_custom_btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.ID, 'add-customization')))
+        # add_custom_btn = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'add-customization')))
+        # add_custom_btn.click()
+        add_custom_btn = self.driver.find_element_by_id("add-customization")
+        action = ActionChains(self.driver)
+        action.move_to_element(add_custom_btn)
+        action.click(add_custom_btn).perform()
 
         try:
             self.driver.switch_to.frame(self.driver.find_element_by_css_selector('iframe[data-ycs="customizer"]'))
@@ -33,7 +40,7 @@ class CustomItemCheckoutTest(unittest.TestCase):
         self.driver.find_element_by_css_selector('[data-yti="add-text"]').click()
         self.driver.find_element_by_id('design-text').send_keys('AUTOMATION TEST')
         self.driver.find_element_by_css_selector('[data-yti="preview-approve"]').click()
-        add_to_cart_btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
+        add_to_cart_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
         add_to_cart_btn.click()
 
     def tearDown(self):
