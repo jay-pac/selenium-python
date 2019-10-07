@@ -8,14 +8,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
 import unittest
+import time
 
 class CustomItemCheckoutTest(unittest.TestCase):
 
     def setUp(self):
-        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        # base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        base_url = 'https://www.yeti.com/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
         self.driver.get(base_url)
+        self.driver.maximize_window()
         
         try:
             splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
@@ -24,9 +27,6 @@ class CustomItemCheckoutTest(unittest.TestCase):
             pass
     
     def tests_custom_check_out(self):
-        # add_custom_btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.ID, 'add-customization')))
-        # add_custom_btn = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'add-customization')))
-        # add_custom_btn.click()
         add_custom_btn = self.driver.find_element_by_id("add-customization")
         action = ActionChains(self.driver)
         action.move_to_element(add_custom_btn)
@@ -42,10 +42,16 @@ class CustomItemCheckoutTest(unittest.TestCase):
         self.driver.find_element_by_css_selector('[data-yti="preview-approve"]').click()
         add_to_cart_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
         add_to_cart_btn.click()
+        time.sleep(10)
+        self.driver.switch_to.default_content()
+        ## Nothing wrong with the locator.  Need to switch back focus to main window from iframe.  Which isn't working @ the moment. Shit.
+        # cart_link = self.driver.find_element_by_xpath('/div[@class="mini-cart"]//a[@class="mini-cart-link"]')
+        cart_link = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
+        cart_link.click()
 
     def tearDown(self):
         self.driver.quit()
     
-    
+        
 if __name__ == '__main__':
     unittest.main()
