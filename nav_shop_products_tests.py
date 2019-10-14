@@ -11,9 +11,11 @@ class NavShopProductsTests(unittest.TestCase):
 
     def setUp(self):
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/home'
+        # base_url = 'https://www.yeti.com/en_US/home'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)
+        self.driver.maximize_window()
 
         try:
             splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
@@ -85,7 +87,7 @@ class NavShopProductsTests(unittest.TestCase):
         
         assert "Outdoor Gear Bags" in self.driver.title
     
-    def tests_product_chargo(self):
+    def tests_product_cargo(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
         shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
@@ -163,7 +165,7 @@ class NavShopProductsTests(unittest.TestCase):
         except NoSuchElementException:
             return False
         
-        assert "GIFT CARDS" in self.driver.title
+        assert "Buy Gift Cards" in self.driver.title
         
     def tearDown(self):
         self.driver.quit()
