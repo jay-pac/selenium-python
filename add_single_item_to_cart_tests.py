@@ -60,8 +60,6 @@ class AddSingleItemToCartTests(unittest.TestCase):
 
         place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
         place_order_btn.click()
-
-        time.sleep(10)
         
     def tearDown(self):
         self.driver.quit()
