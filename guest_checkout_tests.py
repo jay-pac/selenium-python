@@ -8,6 +8,7 @@ from selenium.common.exceptions import *
 import time
 import unittest
 
+
 class GuestCheckoutTest(unittest.TestCase):
 
     def setUp(self):
@@ -106,4 +107,3 @@ class GuestCheckoutTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    

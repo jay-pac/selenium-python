@@ -12,6 +12,7 @@ from selenium.common.exceptions import *
 import unittest
 import time
 
+
 class CustomItemCheckoutTest(unittest.TestCase):
 
     def setUp(self):
@@ -50,7 +51,6 @@ class CustomItemCheckoutTest(unittest.TestCase):
         cart_link = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
         cart_link.click()
 
-    
         # !!!!!Adding func from guest checkout test. Potential demo for e2e tests.  Will remove later.!!!!
         checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
         checkout_btn.click()

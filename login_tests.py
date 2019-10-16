@@ -10,6 +10,7 @@ from selenium.common.exceptions import *
 import unittest
 import time
 
+
 class LoginTests(unittest.TestCase):
 
     def setUp(self):

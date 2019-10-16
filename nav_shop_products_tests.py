@@ -7,6 +7,7 @@ from selenium.common.exceptions import *
 import unittest
 import time
 
+
 class NavShopProductsTests(unittest.TestCase):
 
     def setUp(self):
@@ -169,6 +170,7 @@ class NavShopProductsTests(unittest.TestCase):
         
     def tearDown(self):
         self.driver.quit()
+
 
 if __name__ == '__main__':
     unittest.main()

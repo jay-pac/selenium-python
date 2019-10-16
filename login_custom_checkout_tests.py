@@ -12,6 +12,7 @@ from selenium.common.exceptions import *
 import unittest
 import time
 
+
 class CustomItemCheckoutTest(unittest.TestCase):
 
     def setUp(self):
