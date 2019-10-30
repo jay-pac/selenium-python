@@ -14,27 +14,25 @@ import time
 class LoginTests(unittest.TestCase):
 
     def setUp(self):
-        # base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
-        base_url = 'https://development-na-yeti.demandware.net/s/Yeti_US/en_US/login'
+        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)
         self.driver.maximize_window()
         
         try:
-            splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
+            splash = self.driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
 
     def tests_login(self):
-        email = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="email"]')
-        # email.send_keys("generalOne@user.com")
-        email.send_keys("james@dev.com")
+        email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
+        email.send_keys("generalOne@user.com")
 
-        pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
-        # pwd.send_keys("Generalone19!")
-        pwd.send_keys("cMAyIeOEFG")
+        pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
+        pwd.send_keys("Generalone19!")
+
         login_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, 'dwfrm_login_login')))
         login_btn.click()
 

@@ -4,6 +4,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
+from selenium.webdriver.common.by import By
 import unittest
 import time
 
@@ -11,16 +12,14 @@ import time
 class NavShopProductsTests(unittest.TestCase):
 
     def setUp(self):
-        # base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/home'
-        # base_url = 'https://www.yeti.com/en_US/home'
-        base_url = 'https://development-na-yeti.demandware.net/s/Yeti_US/en_US/home'
+        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/home'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)
         self.driver.maximize_window()
 
         try:
-            splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
+            splash = self.driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
@@ -28,8 +27,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_hard_coolers(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_hardcoolers = self.driver.find_element_by_id('nav-item-hard-coolers')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_hardcoolers = self.driver.find_element(By.ID, 'nav-item-hard-coolers')
         actions = ActionChains(self.driver)
 
         try:
@@ -44,8 +43,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_soft_coolers(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_softcoolers = self.driver.find_element_by_id('nav-item-soft-coolers')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_softcoolers = self.driver.find_element(By.ID, 'nav-item-soft-coolers')
         actions = ActionChains(self.driver)
 
         try:
@@ -60,8 +59,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_drinkware(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_drinkware = self.driver.find_element_by_id('nav-item-drinkware')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_drinkware = self.driver.find_element(By.ID, 'nav-item-drinkware')
         actions = ActionChains(self.driver)
 
         try:
@@ -76,8 +75,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_bags(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_bags = self.driver.find_element_by_id('nav-item-bags')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_bags = self.driver.find_element(By.ID, 'nav-item-bags')
         actions = ActionChains(self.driver)
 
         try:
@@ -92,8 +91,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_cargo(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_cargo = self.driver.find_element_by_id('nav-item-cargo')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_cargo = self.driver.find_element(By.ID, 'nav-item-cargo')
         actions = ActionChains(self.driver)
 
         try:
@@ -108,8 +107,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_chairs(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_chairs = self.driver.find_element_by_id('nav-item-chairs')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_chairs = self.driver.find_element(By.ID, 'nav-item-chairs')
         actions = ActionChains(self.driver)
 
         try:
@@ -124,8 +123,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_accessories(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_acessories = self.driver.find_element_by_id('nav-item-accessories')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_acessories = self.driver.find_element(By.ID, 'nav-item-accessories')
         actions = ActionChains(self.driver)
 
         try:
@@ -140,8 +139,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_more_gear(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_gear = self.driver.find_element_by_id('nav-item-more-gear')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_gear = self.driver.find_element(By.ID, 'nav-item-more-gear')
         actions = ActionChains(self.driver)
 
         try:
@@ -156,8 +155,8 @@ class NavShopProductsTests(unittest.TestCase):
     def tests_product_gift_cards(self):
         assert "YETI | Premium Coolers, Drinkware, Gear, and Apparel" in self.driver.title 
         
-        shop_menu = self.driver.find_element_by_xpath('//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
-        nav_item_giftcards = self.driver.find_element_by_id('nav-item-gift-cards')
+        shop_menu = self.driver.find_element(By.XPATH, '//a[@class="nav-level-1-link has-submenu"][contains(text(),"Shop")]')
+        nav_item_giftcards = self.driver.find_element(By.ID, 'nav-item-gift-cards')
         actions = ActionChains(self.driver)
 
         try:

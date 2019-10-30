@@ -23,28 +23,27 @@ class CustomItemCheckoutTest(unittest.TestCase):
         self.driver.maximize_window()
         
         try:
-            splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
+            splash = self.driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
     
     def tests_custom_check_out(self):
-        add_custom_btn = self.driver.find_element_by_id("add-customization")
+        add_custom_btn = self.driver.find_element(By.ID, "add-customization")
         action = ActionChains(self.driver)
         action.move_to_element(add_custom_btn)
         action.click(add_custom_btn).perform()
 
         try:
-            self.driver.switch_to.frame(self.driver.find_element_by_css_selector('iframe[data-ycs="customizer"]'))
+            self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[data-ycs="customizer"]'))
         except NoSuchElementException:
             return False
         
-        self.driver.find_element_by_css_selector('[data-yti="add-text"]').click()
-        self.driver.find_element_by_id('design-text').send_keys('AUTOMATION TEST')
-        self.driver.find_element_by_css_selector('[data-yti="preview-approve"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="add-text"]').click()
+        self.driver.find_element(By.ID, 'design-text').send_keys('AUTOMATION TEST')
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="preview-approve"]').click()
         add_to_cart_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
         add_to_cart_btn.click()
-        time.sleep(10)
         
         self.driver.switch_to.default_content()
         cart_link = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
@@ -53,16 +52,16 @@ class CustomItemCheckoutTest(unittest.TestCase):
         checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
         checkout_btn.click()
         
-        email = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="email"]')
+        email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
         email.send_keys("generalOne@user.com")
 
-        pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
+        pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
         pwd.send_keys("Generalone19!")
 
-        login_btn = self.driver.find_element_by_name('dwfrm_login_login')
+        login_btn = self.driver.find_element(By.NAME, 'dwfrm_login_login')
         login_btn.click()
 
-        checkout_continue_btn = self.driver.find_element_by_name('dwfrm_singleshipping_save')
+        checkout_continue_btn = self.driver.find_element(By.NAME, 'dwfrm_singleshipping_save')
         checkout_continue_btn.click()
         
         cvv_num = self.driver.find_element(By.CSS_SELECTOR, 'input[class="input-text   required"]')

@@ -19,7 +19,7 @@ class AddSingleItemToCartTests(unittest.TestCase):
         self.driver.maximize_window()
 
         try:
-            splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
+            splash = self.driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
@@ -45,16 +45,16 @@ class AddSingleItemToCartTests(unittest.TestCase):
         checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
         checkout_btn.click()
         
-        email = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="email"]')
+        email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
         email.send_keys("generalOne@user.com")
 
-        pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
+        pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
         pwd.send_keys("Generalone19!")
 
-        login_btn = self.driver.find_element_by_name('dwfrm_login_login')
+        login_btn = self.driver.find_element(By.NAME, 'dwfrm_login_login')
         login_btn.click()
 
-        checkout_continue_btn = self.driver.find_element_by_name('dwfrm_singleshipping_save')
+        checkout_continue_btn = self.driver.find_element(By.NAME, 'dwfrm_singleshipping_save')
         checkout_continue_btn.click()
 
         cvv_num = self.driver.find_element(By.CSS_SELECTOR, 'input[class="input-text   required"]')
