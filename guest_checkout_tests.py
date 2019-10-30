@@ -13,15 +13,12 @@ class GuestCheckoutTest(unittest.TestCase):
 
     def setUp(self):
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
-        # base_url = 'https://www.yeti.com/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)
         self.driver.maximize_window()
 
         try:
-            # splash = self.driver.find_element_by_xpath('//*[@id="bx-element-1025412-TYHGubV"]/button')
-            # splash.click()
             splash = self.driver.find_element(By.CSS_SELECTOR, '#bx-element-1063655-tmuokvD > button')
             splash.click()
         except:
@@ -42,7 +39,8 @@ class GuestCheckoutTest(unittest.TestCase):
         checkout_btn.click()
 
         # Guest Checkout section -- This will be a class method for this test
-        checkout_guest_btn = self.driver.find_element_by_name('dwfrm_login_unregistered')
+        checkout_guest_btn = self.driver.find_element(By.XPATH, '//div[@class="desktop-guest-checkout"]//a[@name="dwfrm_login_unregistered"]')
+        # checkout_guest_btn = self.driver.find_element_by_name('dwfrm_login_unregistered')
         checkout_guest_btn.click()
 
         # Checkout: Shipping Address form
@@ -94,12 +92,16 @@ class GuestCheckoutTest(unittest.TestCase):
         cvv_num.send_keys('111')
 
         self.driver.switch_to.default_content()
-        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
-        place_order_btn.click()
-        time.sleep(10)
 
-        el = self.driver.find_element(By.TAG_NAME, 'h1')
-        assert el.text == "Thanks for your order"
+        place_order_btn = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
+        place_order_btn.click()
+
+        try:
+            order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+            print(order_number)
+        except NoSuchElementException:
+            return False
     
     def tearDown(self):
         self.driver.quit()

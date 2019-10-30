@@ -8,6 +8,7 @@ from selenium.common.exceptions import *
 import unittest
 import time
 
+
 class AddSingleItemToCartTests(unittest.TestCase):
 
     def setUp(self):
@@ -49,6 +50,7 @@ class AddSingleItemToCartTests(unittest.TestCase):
 
         pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
         pwd.send_keys("Generalone19!")
+
         login_btn = self.driver.find_element_by_name('dwfrm_login_login')
         login_btn.click()
 
@@ -60,7 +62,10 @@ class AddSingleItemToCartTests(unittest.TestCase):
 
         place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
         place_order_btn.click()
-        
+
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
+
     def tearDown(self):
         self.driver.quit()
 

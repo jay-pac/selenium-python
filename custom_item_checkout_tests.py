@@ -17,7 +17,6 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
     def setUp(self):
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
-        # base_url = 'https://www.yeti.com/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
         self.driver.get(base_url)
@@ -43,7 +42,7 @@ class CustomItemCheckoutTest(unittest.TestCase):
         self.driver.find_element_by_css_selector('[data-yti="add-text"]').click()
         self.driver.find_element_by_id('design-text').send_keys('AUTOMATION TEST')
         self.driver.find_element_by_css_selector('[data-yti="preview-approve"]').click()
-        add_to_cart_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
+        add_to_cart_btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
         add_to_cart_btn.click()
         time.sleep(10)
         
@@ -51,12 +50,12 @@ class CustomItemCheckoutTest(unittest.TestCase):
         cart_link = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
         cart_link.click()
 
-        # !!!!!Adding func from guest checkout test. Potential demo for e2e tests.  Will remove later.!!!!
         checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
         checkout_btn.click()
 
         # Guest Checkout section -- This will be a class method for this test
-        checkout_guest_btn = self.driver.find_element_by_name('dwfrm_login_unregistered')
+        checkout_guest_btn = self.driver.find_element(By.XPATH, '//div[@class="desktop-guest-checkout"]//a[@name="dwfrm_login_unregistered"]')
+        # checkout_guest_btn = self.driver.find_element_by_name('dwfrm_login_unregistered')
         checkout_guest_btn.click()
 
         # Checkout: Shipping Address form
@@ -108,12 +107,16 @@ class CustomItemCheckoutTest(unittest.TestCase):
         cvv_num.send_keys('111')
 
         self.driver.switch_to.default_content()
-        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
+
+        place_order_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,'button[name="dwfrm_billing_save"]')))
         place_order_btn.click()
 
-        el = self.driver.find_element(By.TAG_NAME, 'h1')
-        assert el.text == "Thanks for your order"
-
+        try:
+            order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+            print(order_number)
+        except NoSuchElementException:
+            return False
 
     def tearDown(self):
         self.driver.quit()

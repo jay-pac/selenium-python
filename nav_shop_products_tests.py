@@ -11,8 +11,9 @@ import time
 class NavShopProductsTests(unittest.TestCase):
 
     def setUp(self):
-        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/home'
+        # base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/home'
         # base_url = 'https://www.yeti.com/en_US/home'
+        base_url = 'https://development-na-yeti.demandware.net/s/Yeti_US/en_US/home'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)

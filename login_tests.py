@@ -14,7 +14,8 @@ import time
 class LoginTests(unittest.TestCase):
 
     def setUp(self):
-        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
+        # base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
+        base_url = 'https://development-na-yeti.demandware.net/s/Yeti_US/en_US/login'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.get(base_url)
@@ -28,10 +29,12 @@ class LoginTests(unittest.TestCase):
 
     def tests_login(self):
         email = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="email"]')
-        email.send_keys("generalOne@user.com")
+        # email.send_keys("generalOne@user.com")
+        email.send_keys("james@dev.com")
 
         pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
-        pwd.send_keys("Generalone19!")
+        # pwd.send_keys("Generalone19!")
+        pwd.send_keys("cMAyIeOEFG")
         login_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, 'dwfrm_login_login')))
         login_btn.click()
 

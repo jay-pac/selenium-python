@@ -17,8 +17,6 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
     def setUp(self):
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
-        # base_url = 'https://www.yeti.com/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
-        # base_url = 'https://Storefront:Yeti2017@dev02-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
         self.driver.get(base_url)
@@ -60,6 +58,7 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
         pwd = self.driver.find_element_by_xpath('//*[@id="dwfrm_login"]//*[@type="password"]')
         pwd.send_keys("Generalone19!")
+
         login_btn = self.driver.find_element_by_name('dwfrm_login_login')
         login_btn.click()
 
@@ -71,6 +70,9 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
         place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
         place_order_btn.click()
+
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
 
     def tearDown(self):
         self.driver.quit()
