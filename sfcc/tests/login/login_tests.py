@@ -22,43 +22,14 @@ class LoginTests(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.get(base_url)
 
-        lp = LoginPage(driver)
-        lp.login('generalOne@user.com', 'Generalone19!')
-
         try:
             splash = driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
             splash.click()
         except:
             pass
 
+        lp = LoginPage(driver)
+        lp.login('generalOne@user.com', 'Generalone19!')
 
-    # def setUp(self):
-    #     base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
-    #     self.driver = webdriver.Chrome()
-    #     self.driver.implicitly_wait(10)
-    #     self.driver.get(base_url)
-    #     self.driver.maximize_window()
-    #
-    #     try:
-    #         splash = self.driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
-    #         splash.click()
-    #     except:
-    #         pass
-#
-#     def tests_login(self):
-#         email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
-#         email.send_keys("generalOne@user.com")
-#
-#         pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
-#         pwd.send_keys("Generalone19!")
-#
-#         login_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, 'dwfrm_login_login')))
-#         login_btn.click()
-#
-#     def tearDown(self):
-#         self.driver.quit()
-#
-#
-# if __name__ == "__main__":
-#     unittest.main()
+
 
