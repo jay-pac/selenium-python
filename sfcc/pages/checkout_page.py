@@ -11,7 +11,14 @@ class CheckoutPage():
         self.driver = driver
 
     def signIn(self, username, password):
-        pass
+        email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
+        email.send_keys(username)
+
+        pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
+        pwd.send_keys(password)
+
+        login_btn = self.driver.find_element(By.NAME, 'dwfrm_login_login')
+        login_btn.click()
 
     def checkoutAsGuest(self):
         checkout_guest_btn = self.driver.find_element(By.XPATH,
@@ -44,13 +51,14 @@ class CheckoutPage():
         email_field = self.driver.find_element(By.ID, 'dwfrm_singleshipping_profile_email')
         email_field.send_keys(email)
 
+    def shippingBtn(self):
         shipping_continue_btn = self.driver.find_element(By.NAME, 'dwfrm_singleshipping_save')
         shipping_continue_btn.click()
 
     def billing(self):
         pass
 
-    def payment(self, cc_num, name, cvv):
+    def guestPayment(self, cc_num, name, cvv):
         try:
             self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[id="paymetric-credit-card"]'))
         except NoSuchElementException:
@@ -75,4 +83,11 @@ class CheckoutPage():
 
         place_order_btn = WebDriverWait(self.driver, 20, poll_frequency=1).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
+        place_order_btn.click()
+
+    def accountPayment(self, cvv):
+        cvv_num = self.driver.find_element(By.CSS_SELECTOR, 'input[class="input-text   required"]')
+        cvv_num.send_keys(cvv)
+
+        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
         place_order_btn.click()

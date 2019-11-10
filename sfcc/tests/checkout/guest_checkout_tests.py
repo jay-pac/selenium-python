@@ -31,7 +31,9 @@ class GuestCheckoutTest(unittest.TestCase):
         checkout.shippingAddress(
             'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555', 'jason.pacitti@yeti.com')
 
-        checkout.payment('4847189499632248', 'John Smith', '111')
+        checkout.shippingBtn()
+
+        checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
         try:
             order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
