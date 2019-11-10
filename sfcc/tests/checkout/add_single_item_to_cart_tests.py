@@ -43,36 +43,6 @@ class AddSingleItemToCartTests(unittest.TestCase):
         checkout.shippingBtn()
         checkout.accountPayment('111')
 
-        # add_cart_btn = self.driver.find_element(By.ID, 'add-to-cart')
-        # action = ActionChains(self.driver)
-        #
-        # action.move_to_element(add_cart_btn)
-        # action.click(add_cart_btn).perform()
-        #
-        # cart_link = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
-        # cart_link.click()
-        #
-        # checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
-        # checkout_btn.click()
-
-        # email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
-        # email.send_keys("generalOne@user.com")
-        #
-        # pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
-        # pwd.send_keys("Generalone19!")
-        #
-        # login_btn = self.driver.find_element(By.NAME, 'dwfrm_login_login')
-        # login_btn.click()
-
-        # checkout_continue_btn = self.driver.find_element(By.NAME, 'dwfrm_singleshipping_save')
-        # checkout_continue_btn.click()
-        #
-        # cvv_num = self.driver.find_element(By.CSS_SELECTOR, 'input[class="input-text   required"]')
-        # cvv_num.send_keys('111')
-        #
-        # place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
-        # place_order_btn.click()
-
         order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
 
