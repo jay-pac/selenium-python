@@ -9,7 +9,6 @@ class CustomizePage():
 
     def __init__(self, driver):
         self.driver = driver
-
     def customModal(self):
         add_custom_btn = self.driver.find_element(By.ID, "add-customization")
         action = ActionChains(self.driver)
