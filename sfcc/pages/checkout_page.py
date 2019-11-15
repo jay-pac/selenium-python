@@ -9,6 +9,10 @@ class CheckoutPage():
 
     def __init__(self, driver):
         self.driver = driver
+    
+    def miniCartCheckoutBtn(self):
+        checkout_btn = self.driver.find_element(By.XPATH, '//div[@class="mini-cart-opened"]//a[@class="button-primary full-width mini-cart-link-checkout"][contains(text(),"Check out")]')
+        checkout_btn.click()
 
     def signIn(self, username, password):
         email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
