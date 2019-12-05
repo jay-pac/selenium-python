@@ -24,3 +24,8 @@ class ProductPage():
 
         checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
         checkout_btn.click()
+    
+    def pdpSwatches(self, color='Black'):
+        swatch_color = f'[data-yti={color}]'
+        swatches = self.driver.find_element(By.CSS_SELECTOR, swatch_color)
+        swatches.click()

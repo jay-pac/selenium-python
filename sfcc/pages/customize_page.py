@@ -3,12 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
+import time
 
 
 class CustomizePage():
 
     def __init__(self, driver):
         self.driver = driver
+    
     def customModal(self):
         add_custom_btn = self.driver.find_element(By.ID, "add-customization")
         action = ActionChains(self.driver)
@@ -19,7 +21,8 @@ class CustomizePage():
             self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[data-ycs="customizer"]'))
         except NoSuchElementException:
             return False
-
+            
+        time.sleep(5)
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="add-text"]').click()
         self.driver.find_element(By.ID, 'design-text').send_keys('AUTOMATION TEST')
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="preview-approve"]').click()
