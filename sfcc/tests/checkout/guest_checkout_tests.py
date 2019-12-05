@@ -9,6 +9,14 @@ import unittest
 class GuestCheckoutTest(unittest.TestCase):
 
     def tests_guest_checkout(self):
+        """Test Scenario: 
+        1. Add single Stock glassware from PDP
+        2. Click on Add To Cart button
+        3. Click on Cart Icon to navigate to Cart Page
+        4. Click on Checkout button
+        5. Checkout As Guest
+        6. Place order to complete 
+        """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver = webdriver.Chrome()
         driver.implicitly_wait(10)

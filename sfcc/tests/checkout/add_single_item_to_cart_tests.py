@@ -9,7 +9,7 @@ class AddSingleItemToCartTests(unittest.TestCase):
 
     def tests_addtocart(self):
         """Test Scenario: 
-        1. Add single item from PDP
+        1. Add single Stock glassware from PDP
         2. Click on Add To Cart button
         3. Click on Cart Icon to navigate to Cart Page
         4. Click on Checkout button

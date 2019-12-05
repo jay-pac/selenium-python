@@ -13,6 +13,14 @@ import unittest
 class CustomItemCheckoutTest(unittest.TestCase):
 
     def tests_custom_check_out(self):
+        """Test Scenario: 
+        1. Add single Custom Text glassware from PDP
+        2. Click on Add To Cart button
+        3. Click on Cart Icon to navigate to Cart Page
+        4. Click on Checkout button
+        5. Sign in as test user
+        6. Place order to complete 
+        """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver = webdriver.Chrome()
         driver.implicitly_wait(5)
@@ -24,17 +32,18 @@ class CustomItemCheckoutTest(unittest.TestCase):
             splash.click()
         except:
             pass
-        custom = CustomizePage(driver)
-        custom.customModal()
 
+        custom = CustomizePage(driver)
         pdp = ProductPage(driver)
-        pdp.addToCart()
+
+        pdp.pdpSwatches('Black')
+        custom.customModal()
         pdp.clickMiniCart()
 
         checkout = CheckoutPage(driver)
-        checkout.signIn('generalOne@user.com', 'Generalone19!')
+        checkout.signIn('jason.pacitti@yeti.com', 'tester123')
         checkout.shippingBtn()
-        checkout.accountPayment('1111')
+        checkout.accountPayment('111')
 
         order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
