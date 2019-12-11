@@ -31,24 +31,42 @@ class MixOrderTests(unittest.TestCase):
         
         lp.login('jason.pacitti@yeti.com', 'tester123')
 
+        # product_urls = [
+        #     '/drinkware/rambler-12-oz-bottle/YRAM12.html',
+        #     '/drinkware/rambler-36-oz-bottle/YRAM36.html',
+        #     '/drinkware/rambler-14-oz-mug/YRAM14.html']
+        # x = 1
+        # while x <= 5:
+        #     for product_url in product_urls:
+        #         driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
+        #         custom.customModal()
+            
+        #     # pdp.clickMiniCart()
+        #     # checkout.miniCartCheckoutBtn()
+        #     cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
+        #     driver.get(cart_url)
+        #     checkout.checkoutBtn()
+        #     checkout.shippingBtn()
+        #     checkout.accountPayment('111')
+        #     order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        #     print(order_number)
+
+        #     x += 1
         product_urls = [
             '/drinkware/rambler-12-oz-bottle/YRAM12.html',
-            '/drinkware/rambler-36-oz-bottle/YRAM36.html',
             '/drinkware/rambler-14-oz-mug/YRAM14.html']
-        x = 1
-        while x <= 5:
-            for product_url in product_urls:
-                driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
-                custom.customModal()
-            
-            # pdp.clickMiniCart()
-            # checkout.miniCartCheckoutBtn()
-            cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
-            driver.get(cart_url)
-            checkout.checkoutBtn()
-            checkout.shippingBtn()
-            checkout.accountPayment('111')
-            order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
-            print(order_number)
 
-            x += 1
+        for product_url in product_urls:
+            driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
+            custom.customModal()
+    
+        driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
+        pdp.addToCart()
+    
+        cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
+        driver.get(cart_url)
+        checkout.checkoutBtn()
+        checkout.shippingBtn()
+        checkout.accountPayment('111')
+        order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
