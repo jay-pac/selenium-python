@@ -17,7 +17,7 @@ class ClpAddStockCheckout(unittest.TestCase):
         6. Place order to complete
         """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware'
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         driver.implicitly_wait(10)
         driver.get(base_url)
         driver.maximize_window()
@@ -26,6 +26,7 @@ class ClpAddStockCheckout(unittest.TestCase):
         clp = CategoryPage(driver)
         checkout = CheckoutPage(driver)
         
+        clp.clpSwatches()
         clp.clickAddToCartBtn()
         pdp.clickMiniCart() # Need to remove mini cart actions from Product page class.  Need to create a new page class for it
         
