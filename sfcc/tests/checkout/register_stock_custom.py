@@ -16,8 +16,8 @@ class MixOrderTests(unittest.TestCase):
         2. Add 2 Custom Text Glasseware products to Cart
         3. Add Stock product to Cart
         4. Navigate on Checkout button
-        6. Place order to complete
-        7. Repeats Steps 2-6
+        5. Place order to complete
+        6. Repeats Steps 2-6
         """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
         driver = webdriver.Chrome()
@@ -40,6 +40,7 @@ class MixOrderTests(unittest.TestCase):
             custom.customModal()
 
         driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
+        pdp.pdpSwatches()
         pdp.addToCart()
 
         cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
