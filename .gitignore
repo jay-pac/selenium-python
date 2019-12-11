@@ -1,0 +1,8 @@
+*.idea/
+*lib/
+*sfcc/__pycache__/
+*sfcc/pages/__pycache__/
+*sfcc/pages/login/__pycache__/
+*sfcc/tests/__pycache__/
+*sfcc/tests/checkout/__pycache__/
+*sfcc/tests/login/__pycache__/
