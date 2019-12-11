@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
 import time
 
+
 class CategoryPage():
 
     def __init__(self, driver):
@@ -12,7 +13,7 @@ class CategoryPage():
     
     def clickProduct(self):
         product_tile = self.driver.find_element(By.XPATH, '//div[@data-product-name="Rambler Colster"]//img[@class="product-tile-image"]')
-        product_title.click()
+        product_tile.click()
     
     def clickAddToCartBtn(self):
         add_to_cart_btn = self.driver.find_element(By.XPATH, '//div[@data-product-name="Rambler Colster"]//button[@class="button button-primary add-to-cart"]')
@@ -20,7 +21,8 @@ class CategoryPage():
 
     def clickCustomizeBtn(self):
         customize_btn = self.driver.find_element(By.XPATH, '//div[@data-product-name="Rambler Colster"]//span[@class="customizer-button-text"]')
-        customzie_btn.click()
+        customize_btn.click()
     
     def clpSwatches(self):
         swatch_color = self.driver.find_element(By.XPATH, '//div[@data-product-name="Rambler Colster"]//a[@data-yti="brick-red"]')
+        swatch_color.click()
