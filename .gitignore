@@ -6,3 +6,5 @@
 *sfcc/tests/__pycache__/
 *sfcc/tests/checkout/__pycache__/
 *sfcc/tests/login/__pycache__/
+*geckodriver.log
+*.vs
