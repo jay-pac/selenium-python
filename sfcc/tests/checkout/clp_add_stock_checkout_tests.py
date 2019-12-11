@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from sfcc.pages.category_page import CategoryPage
+import unittest
 
 
-class ClpAddStockCheckout():
-
+class ClpAddStockCheckout(unittest.TestCase):
 
     def tests_add_to_cart(self):
         """Test Scenario:
@@ -21,4 +21,5 @@ class ClpAddStockCheckout():
         driver.maximize_window()
 
         clp = CategoryPage(driver)
+        clp.clickAddToCartBtn()
 
