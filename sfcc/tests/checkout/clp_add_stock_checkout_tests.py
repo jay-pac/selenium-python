@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from sfcc.pages.category_page import CategoryPage
+from sfcc.pages.product_page import ProductPage
+from sfcc.pages.checkout_page import CheckoutPage
 import unittest
 
 
@@ -19,7 +21,18 @@ class ClpAddStockCheckout(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.get(base_url)
         driver.maximize_window()
-
+        
+        pdp = ProductPage(driver)
         clp = CategoryPage(driver)
+        checkout = CheckoutPage(driver)
+        
         clp.clickAddToCartBtn()
+        pdp.clickMiniCart() # Need to remove mini cart actions from Product page class.  Need to create a new page class for it
+        
+        checkout.signIn('jason.pacitti@yeti.com', 'tester123')
+        checkout.shippingBtn()
+        checkout.accountPayment('111')
+        order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
+
 
