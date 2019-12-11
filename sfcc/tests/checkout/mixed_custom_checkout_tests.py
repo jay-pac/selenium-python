@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from sfcc.pages.login.login_page import LoginPage
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
+from sfcc.pages.customize_page import CustomizePage
 import unittest
 import time
 
@@ -12,7 +13,7 @@ class MixOrderTests(unittest.TestCase):
     def tests_addtocart(self):
         """Test Scenario: 
         1. Login
-        2. Add 3 Stock Glasseware products to Cart
+        2. Add 3 Custom Text Glasseware products to Cart
         3. Click on Cart Icon to navigate to Cart Page
         4. Click on Checkout button
         6. Place order to complete
@@ -24,22 +25,21 @@ class MixOrderTests(unittest.TestCase):
         driver.get(base_url)
         driver.maximize_window()
         lp = LoginPage(driver)
-        pdp = ProductPage(driver)
         checkout = CheckoutPage(driver)
+        custom = CustomizePage(driver)
+        
         lp.login('jason.pacitti@yeti.com', 'tester123')
 
         product_urls = [
-            '/hard-coolers/roadie-20-cooler/YR20.html',
+            '/drinkware/rambler-12-oz-bottle/YRAM12.html',
             '/drinkware/rambler-36-oz-bottle/YRAM36.html',
-            '/drinkware/rambler-half-gallon-jug/YRAMHALFJUG.html']
+            '/drinkware/rambler-14-oz-mug/YRAM14.html']
         x = 1
         while x <= 5:
             for product_url in product_urls:
                 driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
-                pdp.addToCart()
-            
-            # pdp.clickMiniCart()
-            # checkout.miniCartCheckoutBtn()
+                custom.customModal()
+
             cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
             driver.get(cart_url)
             checkout.checkoutBtn()
@@ -49,4 +49,3 @@ class MixOrderTests(unittest.TestCase):
             print(order_number)
 
             x += 1
-    
