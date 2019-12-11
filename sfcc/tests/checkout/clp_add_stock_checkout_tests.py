@@ -17,7 +17,7 @@ class ClpAddStockCheckout(unittest.TestCase):
         6. Place order to complete
         """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware'
-        driver = webdriver.Firefox()
+        driver = webdriver.Chrome()
         driver.implicitly_wait(10)
         driver.get(base_url)
         driver.maximize_window()
