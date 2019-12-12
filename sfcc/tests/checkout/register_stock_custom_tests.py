@@ -41,6 +41,7 @@ class MixOrderTests(unittest.TestCase):
 
         driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
         pdp.pdpSwatches()
+        time.sleep(5)
         pdp.addToCart()
 
         cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'

@@ -33,7 +33,7 @@ class MixOrderTests(unittest.TestCase):
             '/drinkware/rambler-36-oz-bottle/YRAM36.html',
             '/drinkware/rambler-half-gallon-jug/YRAMHALFJUG.html']
         x = 1
-        while x <= 5:
+        while x <= 2:
             for product_url in product_urls:
                 driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
                 pdp.addToCart()

@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *
+import time
 
 
 class CheckoutPage():
@@ -89,8 +90,11 @@ class CheckoutPage():
 
         self.driver.switch_to.default_content()
 
-        place_order_btn = WebDriverWait(self.driver, 20, poll_frequency=1).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
+        # place_order_btn = WebDriverWait(self.driver, 20, poll_frequency=1).until(
+        #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
+        # place_order_btn.click()
+        time.sleep(5)
+        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
         place_order_btn.click()
 
     def accountPayment(self, cvv):

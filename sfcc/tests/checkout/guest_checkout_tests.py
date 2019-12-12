@@ -43,8 +43,5 @@ class GuestCheckoutTest(unittest.TestCase):
 
         checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
-        try:
-            order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
-            print(order_number)
-        except NoSuchElementException:
-            return False
+        order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)

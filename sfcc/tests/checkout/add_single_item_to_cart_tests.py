@@ -29,6 +29,7 @@ class AddSingleItemToCartTests(unittest.TestCase):
             pass
 
         pdp = ProductPage(driver)
+        pdp.pdpQuantityField()
         pdp.addToCart()
         pdp.clickMiniCart()
 

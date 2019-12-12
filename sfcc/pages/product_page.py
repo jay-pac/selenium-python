@@ -29,3 +29,7 @@ class ProductPage():
         swatch_color = f'[data-yti={color}]'
         swatches = self.driver.find_element(By.CSS_SELECTOR, swatch_color)
         swatches.click()
+
+    def pdpQuantityField(self, qty=4):
+        qty_field = self.driver.find_element(By.CSS_SELECTOR, 'input[class="quantity-input custom-quantity-input-pdp valid"]')
+        qty_field.send_keys(qty)

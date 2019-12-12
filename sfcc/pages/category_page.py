@@ -17,6 +17,7 @@ class CategoryPage():
         product_tile.click()
     
     def clickAddToCartBtn(self):
+        time.sleep(5)
         add_to_cart_btn = self.driver.find_element(By.XPATH,
                                                    '//div[@data-product-name="Rambler Colster"]//button[@class="button button-primary add-to-cart"]')
         add_to_cart_btn.click()
@@ -27,6 +28,7 @@ class CategoryPage():
         customize_btn.click()
     
     def clpSwatches(self):
+        time.sleep(5)
         swatch_color = self.driver.find_element(By.XPATH,
                                                 '//div[@data-product-name="Rambler Colster"]//a[@data-yti="brick-red"]')
         swatch_color.click()
