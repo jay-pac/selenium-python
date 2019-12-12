@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from sfcc.pages.category_page import CategoryPage
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
+from sfcc.pages.customize_page import CustomizePage
 import unittest
 
 
@@ -17,7 +18,7 @@ class ClpAddStockCheckout(unittest.TestCase):
         6. Place order to complete
         """
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware'
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         driver.implicitly_wait(10)
         driver.get(base_url)
         driver.maximize_window()
@@ -25,9 +26,12 @@ class ClpAddStockCheckout(unittest.TestCase):
         pdp = ProductPage(driver)
         clp = CategoryPage(driver)
         checkout = CheckoutPage(driver)
+        custom = CustomizePage(driver)
         
         clp.clpSwatches()
-        clp.clickAddToCartBtn()
+        clp.clickCustomizeBtn()
+        custom.customModal()
+        # clp.clickAddToCartBtn()
         pdp.clickMiniCart() # Need to remove mini cart actions from Product page class.  Need to create a new page class for it
         
         checkout.signIn('jason.pacitti@yeti.com', 'tester123')
