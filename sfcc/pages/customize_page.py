@@ -12,10 +12,10 @@ class CustomizePage():
         self.driver = driver
     
     def customModal(self):
-        add_custom_btn = self.driver.find_element(By.ID, "add-customization")
-        action = ActionChains(self.driver)
-        action.move_to_element(add_custom_btn)
-        action.click(add_custom_btn).perform()
+        # add_custom_btn = self.driver.find_element(By.ID, "add-customization")
+        # action = ActionChains(self.driver)
+        # action.move_to_element(add_custom_btn)
+        # action.click(add_custom_btn).perform()
 
         try:
             self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[data-ycs="customizer"]'))
