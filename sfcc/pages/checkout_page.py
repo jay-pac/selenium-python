@@ -10,41 +10,52 @@ class CheckoutPage():
 
     def __init__(self, driver):
         self.driver = driver
+    
+    # Locators
+    _checkout = 'dwfrm_cart_checkoutCart'
+    _mini_checkout = '//div[@class="mini-cart-opened"]//a[@class="button-primary full-width mini-cart-link-checkout"][contains(text(),"Check out")]'
+    _email_field = '//*[@id="dwfrm_login"]//*[@type="email"]'
+    _pwd_field = '//*[@id="dwfrm_login"]//*[@type="password"]'
+    _login = 'dwfrm_login_login'
+    _guest_checkout = '//div[@class="desktop-guest-checkout"]//a[@name="dwfrm_login_unregistered"]'
+    _first_name = 'dwfrm_singleshipping_shippingAddress_addressFields_firstName'
+    _last_name = 'dwfrm_singleshipping_shippingAddress_addressFields_lastName'
+    _address = 'dwfrm_singleshipping_shippingAddress_addressFields_address1'
+    _city = 'dwfrm_singleshipping_shippingAddress_addressFields_city'
    
     def checkoutBtn (self):
-        checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
+        checkout_btn = self.driver.find_element(By.NAME, self._checkout)
         checkout_btn.click()
 
     def miniCartCheckoutBtn(self):
-        checkout_btn = self.driver.find_element(By.XPATH, '//div[@class="mini-cart-opened"]//a[@class="button-primary full-width mini-cart-link-checkout"][contains(text(),"Check out")]')
+        checkout_btn = self.driver.find_element(By.XPATH, self._mini_checkout)
         checkout_btn.click()
 
     def signIn(self, username, password):
-        email = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="email"]')
+        email = self.driver.find_element(By.XPATH, self._email_field)
         email.send_keys(username)
 
-        pwd = self.driver.find_element(By.XPATH, '//*[@id="dwfrm_login"]//*[@type="password"]')
+        pwd = self.driver.find_element(By.XPATH, self._pwd_field)
         pwd.send_keys(password)
 
-        login_btn = self.driver.find_element(By.NAME, 'dwfrm_login_login')
+        login_btn = self.driver.find_element(By.NAME, self._login)
         login_btn.click()
 
     def checkoutAsGuest(self):
-        checkout_guest_btn = self.driver.find_element(By.XPATH,
-                                                 '//div[@class="desktop-guest-checkout"]//a[@name="dwfrm_login_unregistered"]')
+        checkout_guest_btn = self.driver.find_element(By.XPATH, self.checkout_guest_btn)
         checkout_guest_btn.click()
 
     def shippingAddress(self, firstname, lastname, add1, city, state, zip, phone, email):
-        fn = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_firstName')
+        fn = self.driver.find_element(By.ID, self._first_name)
         fn.send_keys(firstname)
 
-        ln = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_lastName')
+        ln = self.driver.find_element(By.ID, self._last_name)
         ln.send_keys(lastname)
 
-        address_1 = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_address1')
+        address_1 = self.driver.find_element(By.ID, self._address)
         address_1.send_keys(add1)
 
-        city_field = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_city')
+        city_field = self.driver.find_element(By.ID, self._city)
         city_field.send_keys(city)
 
         select_state = Select(
