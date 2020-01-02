@@ -22,6 +22,18 @@ class CheckoutPage():
     _last_name = 'dwfrm_singleshipping_shippingAddress_addressFields_lastName'
     _address = 'dwfrm_singleshipping_shippingAddress_addressFields_address1'
     _city = 'dwfrm_singleshipping_shippingAddress_addressFields_city'
+    _state = 'dwfrm_singleshipping_shippingAddress_addressFields_states_state'
+    _zip_code = 'dwfrm_singleshipping_shippingAddress_addressFields_postal'
+    _phone_num = 'dwfrm_singleshipping_shippingAddress_addressFields_phone'
+    _email = 'dwfrm_singleshipping_profile_email'
+    _continue = 'dwfrm_singleshipping_save'
+    _cc_num = 'c-cardnumber'
+    _cc_name = 'c-cardname'
+    _cc_month = 'c-exmth'
+    _cc_year = 'c-exyr'
+    _cvv = 'c-cvv'
+    _place_order = 'button[name="dwfrm_billing_save"]'
+    _cvv_registered = 'input[class="input-text   required"]'
    
     def checkoutBtn (self):
         checkout_btn = self.driver.find_element(By.NAME, self._checkout)
@@ -42,7 +54,7 @@ class CheckoutPage():
         login_btn.click()
 
     def checkoutAsGuest(self):
-        checkout_guest_btn = self.driver.find_element(By.XPATH, self.checkout_guest_btn)
+        checkout_guest_btn = self.driver.find_element(By.XPATH, self._guest_checkout)
         checkout_guest_btn.click()
 
     def shippingAddress(self, firstname, lastname, add1, city, state, zip, phone, email):
@@ -59,20 +71,20 @@ class CheckoutPage():
         city_field.send_keys(city)
 
         select_state = Select(
-            self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_states_state'))
+            self.driver.find_element(By.ID, self._state))
         select_state.select_by_value(state)
 
-        zip_code = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_postal')
+        zip_code = self.driver.find_element(By.ID, self._zip_code)
         zip_code.send_keys(zip)
 
-        phone_field = self.driver.find_element(By.ID, 'dwfrm_singleshipping_shippingAddress_addressFields_phone')
+        phone_field = self.driver.find_element(By.ID, self._phone_num)
         phone_field.send_keys(phone)
 
-        email_field = self.driver.find_element(By.ID, 'dwfrm_singleshipping_profile_email')
+        email_field = self.driver.find_element(By.ID, self._email)
         email_field.send_keys(email)
 
     def shippingBtn(self):
-        shipping_continue_btn = self.driver.find_element(By.NAME, 'dwfrm_singleshipping_save')
+        shipping_continue_btn = self.driver.find_element(By.NAME, self._continue)
         shipping_continue_btn.click()
 
     def billing(self):
@@ -84,19 +96,19 @@ class CheckoutPage():
         except NoSuchElementException:
             return False
 
-        cc_num_field = self.driver.find_element(By.ID, 'c-cardnumber')
+        cc_num_field = self.driver.find_element(By.ID, self._cc_num)
         cc_num_field.send_keys(cc_num)
 
-        name_on_card = self.driver.find_element(By.ID, 'c-cardname')
+        name_on_card = self.driver.find_element(By.ID, self._cc_name)
         name_on_card.send_keys(name)
 
-        select_exp_month = Select(self.driver.find_element(By.ID, 'c-exmth'))
+        select_exp_month = Select(self.driver.find_element(By.ID, self._cc_month))
         select_exp_month.select_by_value('1')
 
-        select_exp_year = Select(self.driver.find_element(By.ID, 'c-exyr'))
+        select_exp_year = Select(self.driver.find_element(By.ID, self._cc_year))
         select_exp_year.select_by_value('2028')
 
-        cvv_num = self.driver.find_element(By.ID, 'c-cvv')
+        cvv_num = self.driver.find_element(By.ID, self._cvv)
         cvv_num.send_keys(cvv)
 
         self.driver.switch_to.default_content()
@@ -105,12 +117,12 @@ class CheckoutPage():
         #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
         # place_order_btn.click()
         time.sleep(5)
-        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
+        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, self._place_order)
         place_order_btn.click()
 
     def accountPayment(self, cvv):
-        cvv_num = self.driver.find_element(By.CSS_SELECTOR, 'input[class="input-text   required"]')
+        cvv_num = self.driver.find_element(By.CSS_SELECTOR, self._cvv_registered)
         cvv_num.send_keys(cvv)
 
-        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')
+        place_order_btn = self.driver.find_element(By.CSS_SELECTOR, self._place_order)
         place_order_btn.click()
