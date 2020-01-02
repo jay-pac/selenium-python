@@ -10,11 +10,18 @@ class CustomizePage():
 
     def __init__(self, driver):
         self.driver = driver
+
+    # Locators
+    _custom_btn = 'add-customization'
+    _add_text = '[data-yti="add-text"]'
+    _text = 'design-text'
+    _approve = '[data-yti="preview-approve"]'
+    _add_to_cart = '[data-yti="add-to-cart"]'
     
     def customModal(self):
         # need to comment out when using the CLP tests
         time.sleep(5)
-        add_custom_btn = self.driver.find_element(By.ID, "add-customization")
+        add_custom_btn = self.driver.find_element(By.ID, self._custom_btn)
         action = ActionChains(self.driver)
         action.move_to_element(add_custom_btn)
         action.click(add_custom_btn).perform()
@@ -25,11 +32,11 @@ class CustomizePage():
             return False
             
         time.sleep(5)
-        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="add-text"]').click()
-        self.driver.find_element(By.ID, 'design-text').send_keys('AUTOMATION TEST')
-        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="preview-approve"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
+        self.driver.find_element(By.ID, self._text).send_keys('AUTOMATION TEST')
+        self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
         add_to_cart_btn = WebDriverWait(self.driver, 20).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-yti="add-to-cart"]')))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self._add_to_cart)))
         add_to_cart_btn.click()
 
         self.driver.switch_to.default_content()
