@@ -34,7 +34,7 @@ class CustomizePage():
         time.sleep(5)
         self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
         self.driver.find_element(By.ID, self._text).send_keys('AUTOMATION TEST')
-        self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
+        self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
         add_to_cart_btn = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self._add_to_cart)))
         add_to_cart_btn.click()
