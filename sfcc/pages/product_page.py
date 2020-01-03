@@ -27,8 +27,9 @@ class ProductPage():
             EC.element_to_be_clickable((By.XPATH, '//div[@class="mini-cart"]//a[@class="mini-cart-link"]')))
         cart_link.click()
 
-        # checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
-        # checkout_btn.click()
+        # Need to remove logic to another class
+        checkout_btn = self.driver.find_element(By.NAME, 'dwfrm_cart_checkoutCart')
+        checkout_btn.click()
     
     def pdpSwatches(self, color='Black'):
         swatch_color = f'[data-yti={color}]'
