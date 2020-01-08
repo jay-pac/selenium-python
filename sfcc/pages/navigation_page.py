@@ -11,8 +11,15 @@ class NavigationPage():
     # Locators
     _primary_cooler = '//a[@class="primary-nav-link-yeti"][contains(text(),"Coolers")]'
     _primary_drinkware = '//a[@class="primary-nav-link-yeti"][contains(text(),"Drinkware")]'
+    _primary_bags = '//a[@class="primary-nav-link-yeti"][contains(text(),"Bags")]'
+    _primary_gear = '//a[@class="primary-nav-link-yeti"][contains(text(),"Gear")]'
+    _primary_accessories = '//a[@class="primary-nav-link-yeti"][contains(text(),"Accessories")]'
+    _primary_custom = '//a[@class="primary-nav-link-yeti"][contains(text(),"Custom")]'
+    _primary_this_yeti = '//a[@class="primary-nav-link-yeti"][contains(text(),"This is YETI")]'
     _hard_cooler = 'nav-item-desktop-hard-coolers'
     _tumblers = 'nav-item-desktop-drinkware-tumblers'
+    _waterproof = 'nav-item-desktop-waterproof-bags'
+    _cargo = 'nav-item-desktop-gear-cargo'
 
     def mouseOverCoolers(self):
         self.cooler_menu = self.driver.find_element(By.XPATH, self._primary_cooler )
