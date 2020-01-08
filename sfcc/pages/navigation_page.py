@@ -4,22 +4,54 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
 
+
 class NavigationPage():
     def __init__(self, driver):
         self.driver = driver
 
     # Locators
     _primary_cooler = '//a[@class="primary-nav-link-yeti"][contains(text(),"Coolers")]'
-    _primary_drinkware = '//a[@class="primary-nav-link-yeti"][contains(text(),"Drinkware")]'
-    _primary_bags = '//a[@class="primary-nav-link-yeti"][contains(text(),"Bags")]'
-    _primary_gear = '//a[@class="primary-nav-link-yeti"][contains(text(),"Gear")]'
-    _primary_accessories = '//a[@class="primary-nav-link-yeti"][contains(text(),"Accessories")]'
-    _primary_custom = '//a[@class="primary-nav-link-yeti"][contains(text(),"Custom")]'
-    _primary_this_yeti = '//a[@class="primary-nav-link-yeti"][contains(text(),"This is YETI")]'
     _hard_cooler = 'nav-item-desktop-hard-coolers'
+    _roadie_20 = ''
+    _tundra = ''
+    _tank = ''
+    _silo = ''
+    _soft_coolers = ''
+    _hopper = ''
+    _daytrip = ''
+    _custom_hard_coolers = ''
+    _college = ''
+    _nascar = ''
+
+    _primary_drinkware = '//a[@class="primary-nav-link-yeti"][contains(text(),"Drinkware")]'
     _tumblers = 'nav-item-desktop-drinkware-tumblers'
+    _bottles = ''
+    _mugs = ''
+    _jugs = ''
+    _barware = ''
+    _custom_drinkware = ''
+    _custom_logo = ''
+    _design_gallery = ''
+
+    _primary_bags = '//a[@class="primary-nav-link-yeti"][contains(text(),"Bags")]'
     _waterproof = 'nav-item-desktop-waterproof-bags'
+    _camino = ''
+    _panga = ''
+    _sidekick = ''
+    _everyday_bags = ''
+    _backpack = ''
+    _tote = ''
+
+    _primary_gear = '//a[@class="primary-nav-link-yeti"][contains(text(),"Gear")]'
     _cargo = 'nav-item-desktop-gear-cargo'
+
+    _primary_accessories = '//a[@class="primary-nav-link-yeti"][contains(text(),"Accessories")]'
+
+    _primary_custom = '//a[@class="primary-nav-link-yeti"][contains(text(),"Custom")]'
+
+    _primary_this_yeti = '//a[@class="primary-nav-link-yeti"][contains(text(),"This is YETI")]'
+
+
 
     def mouseOverCoolers(self):
         self.cooler_menu = self.driver.find_element(By.XPATH, self._primary_cooler )
@@ -67,4 +99,3 @@ class NavigationPage():
     
     def clickThisYeti(self):
         pass
-    
