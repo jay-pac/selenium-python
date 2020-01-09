@@ -97,10 +97,25 @@ class NavigationPage():
 
 
     def mouseOverCoolers(self):
-        self.cooler_menu = self.driver.find_element(By.XPATH, self._primary_cooler )
+        self.cooler_menu = self.driver.find_element(By.XPATH, self._primary_cooler)
     
     def mouseOverDrinkware(self):
-        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_drinkware )
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_drinkware)
+
+    def mouseOverBags(self):
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_bags)
+
+    def mouseOverGear(self):
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_gear)
+
+    def mouseOverAccess(self):
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_accessories)
+
+    def mouseOverCustom(self):
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_custom)
+
+    def mouseOverYeti(self):
+        self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_this_yeti)
 
     def clickHardCoolers(self):
         nav_item_hardcoolers = self.driver.find_element(By.ID, self._hard_cooler)
