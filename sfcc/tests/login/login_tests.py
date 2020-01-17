@@ -22,11 +22,15 @@ class LoginTests(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.get(base_url)
 
-        try:
-            splash = driver.find_element(By.XPATH, '//*[@id="bx-element-1025412-TYHGubV"]/button')
-            splash.click()
-        except:
-            pass
+        cookie = {
+            'domain': 'staging-na-yeti.demandware.net',
+            'httpOnly': False,
+            'name': 'consent-accepted',
+            'path': '/',
+            'secure': False,
+            'value': 'true'}
+        driver.add_cookie(cookie)
+        driver.refresh()
 
         lp = LoginPage(driver)
         lp.login('generalOne@user.com', 'Generalone19!')

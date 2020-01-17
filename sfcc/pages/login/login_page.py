@@ -23,6 +23,9 @@ class LoginPage():
         pwd = self.driver.find_element(By.XPATH, self._password_field)
         pwd.send_keys(password)
 
-        login_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, self._loginbutton)))
-        login_btn.click()
+        # login_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.NAME, self._loginbutton)))
+        # login_btn.click()
+
+        self.driver.execute_script("document.getElementsByName('dwfrm_login_login')[0].click()")
+
 

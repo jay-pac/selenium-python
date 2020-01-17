@@ -15,7 +15,7 @@ class CategoryPage():
     _product_tile = '//div[@data-product-name="Rambler Colster"]//img[@class="product-tile-image"]'
     _add_to_cart = '//div[@data-product-name="Rambler Colster"]//button[@class="button button-primary add-to-cart"]'
     _customize = '//div[@data-product-name="Rambler Colster"]//span[@class="customizer-button-text"]'
-    _swatch = '//div[@data-product-name="Rambler Colster"]//a[@data-yti="brick-red"]'
+    _swatch = '//div[@data-product-name="Rambler Colster"]//a[@data-yti="black"]'
 
     
     def clickProduct(self):
@@ -32,6 +32,7 @@ class CategoryPage():
         customize_btn.click()
     
     def clpSwatches(self):
-        time.sleep(5)
         swatch_color = self.driver.find_element(By.XPATH, self._swatch)
-        swatch_color.click()
+        actions = ActionChains(self.driver)
+        actions.move_to_element(swatch_color)
+        actions.click(swatch_color).perform()

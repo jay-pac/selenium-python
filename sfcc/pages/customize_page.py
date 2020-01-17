@@ -18,14 +18,14 @@ class CustomizePage():
     _approve = '[data-yti="preview-approve"]'
     _add_to_cart = '[data-yti="add-to-cart"]'
     
-    def customModal(self):
-        # need to comment out when using the CLP tests
+    def pdpClickCustomButton(self):
         time.sleep(5)
         add_custom_btn = self.driver.find_element(By.ID, self._custom_btn)
         action = ActionChains(self.driver)
         action.move_to_element(add_custom_btn)
         action.click(add_custom_btn).perform()
 
+    def customModal(self):
         try:
             self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[data-ycs="customizer"]'))
         except NoSuchElementException:
