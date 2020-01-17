@@ -22,20 +22,26 @@ class CustomItemCheckoutTest(unittest.TestCase):
         driver = webdriver.Chrome()
         driver.implicitly_wait(10)
         driver.get(base_url)
+
+        cookie = {
+            'domain': 'staging-na-yeti.demandware.net',
+            'httpOnly': False,
+            'name': 'consent-accepted',
+            'path': '/',
+            'secure': False,
+            'value': 'true'}
+        driver.add_cookie(cookie)
+        driver.refresh()
+
         driver.maximize_window()
 
-        try:
-            splash = driver.find_element(By.CSS_SELECTOR, '#bx-element-1063655-tmuokvD > button')
-            splash.click()
-        except:
-            pass
         custom = CustomizePage(driver)
-        custom.customModal()
-
         pdp = ProductPage(driver)
-        pdp.clickMiniCart()
-
         checkout = CheckoutPage(driver)
+
+        custom.pdpClickCustomButton()
+        custom.customModal()
+        pdp.clickMiniCart()
         checkout.checkoutAsGuest()
 
         checkout.shippingAddress(

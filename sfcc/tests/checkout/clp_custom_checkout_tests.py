@@ -21,6 +21,17 @@ class ClpAddStockCheckout(unittest.TestCase):
         driver = webdriver.Chrome()
         driver.implicitly_wait(10)
         driver.get(base_url)
+
+        cookie = {
+            'domain': 'staging-na-yeti.demandware.net',
+            'httpOnly': False,
+            'name': 'consent-accepted',
+            'path': '/',
+            'secure': False,
+            'value': 'true'}
+        driver.add_cookie(cookie)
+        driver.refresh()
+
         driver.maximize_window()
 
         pdp = ProductPage(driver)
