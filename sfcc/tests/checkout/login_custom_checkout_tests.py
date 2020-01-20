@@ -40,13 +40,13 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
         custom = CustomizePage(driver)
         pdp = ProductPage(driver)
+        checkout = CheckoutPage(driver)
 
         pdp.pdpSwatches('Black')
         custom.pdpClickCustomButton()
         custom.customModal()
         pdp.clickMiniCart()
 
-        checkout = CheckoutPage(driver)
         checkout.signIn('jason.pacitti@yeti.com', 'tester123')
         checkout.shippingBtn()
         checkout.accountPayment('111')
