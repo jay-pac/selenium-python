@@ -16,10 +16,31 @@ class ProductPage():
     _add_qty = 'input[class="quantity-input custom-quantity-input-pdp valid"]'
 
     def addToCart(self):
-        add_cart_btn = self.driver.find_element(By.ID, self._pdp_add_to_cart)
-        action = ActionChains(self.driver)
-        action.move_to_element(add_cart_btn)
-        action.click(add_cart_btn).perform()
+        # add_cart_btn = self.driver.find_element(By.ID, self._pdp_add_to_cart)
+        # action = ActionChains(self.driver)
+        # action.move_to_element(add_cart_btn)
+        # action.click(add_cart_btn).perform()
+
+        # wait = WebDriverWait(self.driver, 10, poll_frequency=1, 
+        # ignored_exceptions=[NoSuchElementException,
+        # ElementNotVisibleException,
+        # ElementNotSelectableException,
+        # ElementClickInterceptedException,
+        # StaleElementReferenceException])
+        # add_cart_btn = wait.until(EC.element_to_be_clickable((By.XPATH, self._pdp_add_to_cart)))
+        # add_cart_btn.click()
+        
+        # attempts=0
+        # while attempts > 2:
+        #     try:
+        #         add_cart_btn = self.driver.find_element(By.ID, self._pdp_add_to_cart)
+        #         add_cart_btn.click()
+        #     except:
+        #         print(f'element {add_cart_btn} does not appear on page')
+            
+        #     attempts += 0
+        #     return attempts
+        self.driver.execute_script("document.getElementById('add-to-cart').click();")
 
     def clickMiniCart(self):
         time.sleep(5)
