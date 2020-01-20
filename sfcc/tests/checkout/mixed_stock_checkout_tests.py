@@ -22,7 +22,19 @@ class MixOrderTests(unittest.TestCase):
         driver = webdriver.Chrome()
         driver.implicitly_wait(10)
         driver.get(base_url)
+
+        cookie = {
+            'domain': 'staging-na-yeti.demandware.net',
+            'httpOnly': False,
+            'name': 'consent-accepted',
+            'path': '/',
+            'secure': False,
+            'value': 'true'}
+        driver.add_cookie(cookie)
+        driver.refresh()
+        
         driver.maximize_window()
+        
         lp = LoginPage(driver)
         pdp = ProductPage(driver)
         checkout = CheckoutPage(driver)
@@ -33,7 +45,7 @@ class MixOrderTests(unittest.TestCase):
             '/drinkware/rambler-36-oz-bottle/YRAM36.html',
             '/drinkware/rambler-half-gallon-jug/YRAMHALFJUG.html']
         x = 1
-        while x <= 2:
+        while x <= 3:
             for product_url in product_urls:
                 driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
                 pdp.addToCart()
