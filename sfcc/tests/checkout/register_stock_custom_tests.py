@@ -49,6 +49,7 @@ class MixOrderTests(unittest.TestCase):
 
         for product_url in product_urls:
             driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
+            custom.pdpClickCustomButton()
             custom.customModal()
 
         driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
