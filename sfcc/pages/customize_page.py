@@ -17,6 +17,7 @@ class CustomizePage():
     _text = 'design-text'
     _approve = '[data-yti="preview-approve"]'
     _add_to_cart = '[data-yti="add-to-cart"]'
+    _swatch = '[data-yti={color}]'
     
     def pdpClickCustomButton(self):
         time.sleep(5)
@@ -32,11 +33,52 @@ class CustomizePage():
             return False
             
         time.sleep(5)
+
+    def selectCustomText(self):
         self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
         self.driver.find_element(By.ID, self._text).send_keys('AUTOMATION TEST')
+
+    def selectCustomMono(self):
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="monogram"]').click()
+        self.driver.find_element(By.ID, 'monogram-text').send_keys('QAT')
+
+    def selectCustomDesign(self):
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="designs"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="nascar"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-name="Dale Sr."]').click()
+
+    def selectCustomLogo(self):
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
+        self.driver.find_element(By.NAME, 'upload-image').click()
+
+    def clickApproval(self):
         self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
-        add_to_cart_btn = WebDriverWait(self.driver, 20).until(
+
+    def clickAddToCart(self):
+        add_to_cart_btn = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self._add_to_cart)))
         add_to_cart_btn.click()
-
         self.driver.switch_to.default_content()
+
+    def addCustomSwatches(self, color='color-black'):
+        swatch_color = f'[data-yti={color}]'
+        swatches = self.driver.find_element(By.CSS_SELECTOR, swatch_color)
+        swatches.click()
+
+    def addNumQtyField(self, num='6'):
+        # need to be able clear the field before entering a num.
+        # Currently it just adds the value to the end of the field.  So 6 will be 16
+        qty_field = self.driver.find_element(By.ID, 'custom-quantity')
+        qty_field.clear()
+        qty_field.send_keys(num)
+
+    def clickIncrementButton(self):
+        increment = self.driver.find_element(By.XPATH, '//button[@class="increment"]')
+        # increment.click()
+        x = 1
+        while x <= 5:
+            increment.click()
+            x += 1
+
+    def clickDecrementButton(self):
+        pass
