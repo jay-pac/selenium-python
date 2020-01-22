@@ -43,8 +43,18 @@ class CustomItemCheckoutTest(unittest.TestCase):
         checkout = CheckoutPage(driver)
 
         pdp.pdpSwatches('Black')
+
         custom.pdpClickCustomButton()
         custom.customModal()
+        custom.addCustomSwatches('color-seafoam')
+        custom.selectCustomText()
+        custom.selectCustomMono()
+        custom.selectCustomDesign()
+        custom.clickApproval()
+        custom.addNumQtyField()
+        custom.clickIncrementButton()
+        custom.clickAddToCart()
+
         pdp.clickMiniCart()
 
         checkout.signIn('jason.pacitti@yeti.com', 'tester123')
