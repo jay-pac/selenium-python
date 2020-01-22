@@ -43,7 +43,7 @@ class MixOrderTests(unittest.TestCase):
         lp.login('jason.pacitti@yeti.com', 'tester123')
 
         product_urls = [
-            '/drinkware/rambler-12-oz-bottle/YRAM12.html',
+            '/drinkware/rambler-18-oz-bottle/YRAM18.html',
             '/drinkware/rambler-36-oz-bottle/YRAM36.html',
             '/drinkware/rambler-24-oz-mug/YRAM24.html']
         x = 1
