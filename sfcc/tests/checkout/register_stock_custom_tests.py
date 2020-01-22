@@ -45,7 +45,7 @@ class MixOrderTests(unittest.TestCase):
 
         product_urls = [
             '/drinkware/rambler-12-oz-bottle/YRAM12.html',
-            '/drinkware/rambler-14-oz-mug/YRAM14.html']
+            '/drinkware/rambler-14-oz-mug/YRAM24.html']
 
         for product_url in product_urls:
             driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
