@@ -35,7 +35,7 @@ class MasterOrderTests(unittest.TestCase):
         self.custom = CustomizePage(self.driver)
         self.clp = CategoryPage(self.driver)
 
-        self.lp.login('jason.pacitti@yeti.com', 'tester123')
+        self.lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
 
     def tests_createMixedOrder(self):
         product_urls = [
@@ -61,6 +61,10 @@ class MasterOrderTests(unittest.TestCase):
         self.clp.clpSwatches()
         self.clp.clickCustomizeBtn()
         self.custom.customModal()
+        self.custom.customModal()
+        self.custom.selectCustomMono()
+        self.custom.clickApproval()
+        self.custom.clickAddToCart()
         self.pdp.clickMiniCart()
 
         # self.checkout.checkoutBtn()

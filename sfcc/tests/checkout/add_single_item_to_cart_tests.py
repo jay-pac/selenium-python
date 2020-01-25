@@ -45,7 +45,7 @@ class AddSingleItemToCartTests(unittest.TestCase):
         pdp.clickMiniCart()
 
         checkout = CheckoutPage(driver)
-        checkout.signIn('jason.pacitti@yeti.com', 'tester123')
+        checkout.signIn('jason.pacitti011420@yeti.com', 'Tester456!')
         checkout.shippingBtn()
         checkout.accountPayment('111')
 

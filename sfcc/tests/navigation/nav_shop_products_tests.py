@@ -22,6 +22,5 @@ class NavShopProductsTests(unittest.TestCase):
         cooler_nav = NavigationPage(driver)
         cooler_nav.mouseOverCoolers()
         cooler_nav.clickHardCoolers()
-
         cooler_nav.mouseOverDrinkware()
         cooler_nav.clickTumbler()

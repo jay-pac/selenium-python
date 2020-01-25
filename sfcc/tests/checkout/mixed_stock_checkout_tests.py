@@ -38,7 +38,7 @@ class MixOrderTests(unittest.TestCase):
         lp = LoginPage(driver)
         pdp = ProductPage(driver)
         checkout = CheckoutPage(driver)
-        lp.login('jason.pacitti@yeti.com', 'tester123')
+        lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
 
         product_urls = [
             '/hard-coolers/roadie-20-cooler/YR20.html',

@@ -41,6 +41,10 @@ class CustomItemCheckoutTest(unittest.TestCase):
 
         custom.pdpClickCustomButton()
         custom.customModal()
+        custom.selectCustomMono()
+        custom.clickApproval()
+        custom.clickAddToCart()
+
         pdp.clickMiniCart()
         checkout.checkoutAsGuest()
 

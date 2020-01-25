@@ -41,7 +41,7 @@ class MixOrderTests(unittest.TestCase):
         checkout = CheckoutPage(driver)
         custom = CustomizePage(driver)
 
-        lp.login('jason.pacitti@yeti.com', 'tester123')
+        lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
 
         product_urls = [
             '/drinkware/rambler-12-oz-bottle/YRAM12.html',
@@ -51,6 +51,10 @@ class MixOrderTests(unittest.TestCase):
             driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
             custom.pdpClickCustomButton()
             custom.customModal()
+            custom.addCustomSwatches()
+            custom.selectCustomMono()
+            custom.clickApproval()
+            custom.clickAddToCart()
 
         driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
         pdp.pdpSwatches()
