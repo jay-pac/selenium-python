@@ -31,6 +31,18 @@ class AccountPage():
     _address_zip = 'dwfrm_profile_address_postal'
     _address_phone = 'dwfrm_profile_address_phone'
     _save_address = 'dwfrm_profile_address_save'
+    _edit_address = '//a[@class="address-edit"]'
+    _remove_address = '//a[@class="address-delete delete"]'
+    _cc_view_all = '//a[contains(text(),"view all")]'
+    _cc_add_cc = '//a[@class="section-header-note add-card button-primary"]'
+    _cc_nickname = 'dwfrm_paymentinstruments_creditcards_newcreditcard_nickname'
+    _cc_cardnumber = 'c-cardnumber'
+    _cc_name = 'c-cardname'
+    _cc_month = 'c-exmth'
+    _cc_year = 'c-exyr'
+    _cc_cvv = 'lbl-c-cvv'
+    _cc_apply = 'applyBtn'
+
 
     def enterFirstName(self):
         fn = self.driver.find_element(By.ID, self._customer_fn)
@@ -69,6 +81,7 @@ class AccountPage():
 
     def clickAddBtn(self):
         pass
+
     # Address Form
     def enterAddressNicname(self):
         pass
