@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
 import time
+from datetime import datetime
+
 
 class AccountPage():
 
@@ -28,12 +30,15 @@ class AccountPage():
         ln.send_keys('Flintstone')
 
     def enterEmail(self):
+        # running into error when attempting to store the email value in the confirm email method.
+        timestamp = datetime.now().strftime('%y%m%d%H%M')
         email = self.driver.find_element(By.ID, self._customer_email)
-        email.send_keys('yabba_dabba@yeti.com')
+        email.send_keys(f'qa{timestamp}@yeti.com')
 
     def confirmEmail(self):
+        timestamp = datetime.now().strftime('%y%m%d%H%M')
         email = self.driver.find_element(By.ID, self._confirm_email)
-        email.send_keys('yabba_dabba@yeti.com')
+        email.send_keys(f'qa{timestamp}@yeti.com')
 
     def enterPassword(self):
         psw = self.driver.find_element(By.XPATH, self._customer_psw)
