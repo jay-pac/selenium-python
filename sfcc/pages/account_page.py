@@ -20,6 +20,10 @@ class AccountPage():
     _customer_psw = '//form[contains(@id,"RegistrationForm")]//input[contains(@id,"profile_login_password_")]'
     _confirm_psw = '//form[contains(@id,"RegistrationForm")]//input[contains(@id,"profile_login_passwordconfirm_")]'
     _form_sign_in = 'dwfrm_profile_confirm'
+    _manage_address = '//a[contains(text(),"manage addresses")]'
+    _address_button = '//a[@class="button-primary section-header-note address-create"]'
+
+    _save_address = 'dwfrm_profile_address_save'
 
     def enterFirstName(self):
         fn = self.driver.find_element(By.ID, self._customer_fn)
@@ -52,4 +56,36 @@ class AccountPage():
         signup_btn = self.driver.find_element(By.NAME, self._form_sign_in)
         signup_btn.click()
 
+    # Add Address methods
+    def clickManageAddress(self):
+        pass
 
+    def clickAddBtn(self):
+        pass
+    # Address Form
+    def enterAddressNicname(self):
+        pass
+
+    def enterFirstName(self):
+        pass
+
+    def enterLastName(self):
+        pass
+
+    def enterAddress(self):
+        pass
+
+    def enterCity(self):
+        pass
+
+    def selectState(self):
+        pass
+
+    def enterZip(self):
+        pass
+
+    def enterPhone(self):
+        pass
+
+    def clickSaveButton(self):
+        pass
