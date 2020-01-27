@@ -22,7 +22,14 @@ class AccountPage():
     _form_sign_in = 'dwfrm_profile_confirm'
     _manage_address = '//a[contains(text(),"manage addresses")]'
     _address_button = '//a[@class="button-primary section-header-note address-create"]'
-
+    _address_nickname = 'dwfrm_profile_address_addressid'
+    _address_fn = 'dwfrm_profile_address_firstname'
+    _address_ln = 'dwfrm_profile_address_lastname'
+    _address_1 = 'dwfrm_profile_address_address1'
+    _address_city = 'dwfrm_profile_address_city'
+    _address_state = 'dwfrm_profile_address_states_state_chosen'
+    _address_zip = 'dwfrm_profile_address_postal'
+    _address_phone = 'dwfrm_profile_address_phone'
     _save_address = 'dwfrm_profile_address_save'
 
     def enterFirstName(self):
