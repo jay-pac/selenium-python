@@ -35,17 +35,24 @@ class MasterOrderTests(unittest.TestCase):
         self.custom = CustomizePage(self.driver)
         self.clp = CategoryPage(self.driver)
 
-        self.lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
+        self.lp.login('jason.pacitti@yeti.com', 'tester123')
 
     def tests_createMixedOrder(self):
         product_urls = [
-            '/drinkware/rambler-12-oz-bottle/YRAM12.html',
-            '/drinkware/rambler-36-oz-bottle/YRAM36.html',
-            '/drinkware/rambler-24-oz-mug/YRAM24.html']
+            '/drinkware/rambler-18-oz-bottle/YRAM18.html?dwvar_YRAM18_color=seafoam&cgid=bottles#start=1',
+            '/drinkware/rambler-24-oz-mug/YRAM24.html',
+            '/more-gear/boomer-4-dog-bowl/YB4DB.html',
+            '/drinkware/rambler-10-oz-wine-tumbler/YRAMWINE10.html?dwvar_YRAMWINE10_color=white&cgid=drinkware#start=1',
+            '/drinkware/rambler-20-oz-tumbler/YRAM20.html?dwvar_YRAM20_color=black&cgid=drinkware#start=1',
+            '/drinkware/rambler-14-oz-mug/YRAM14.html?dwvar_YRAM14_color=navy&cgid=mugs#start=1']
+
         for product_url in product_urls:
             self.driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
             self.custom.pdpClickCustomButton()
             self.custom.customModal()
+            self.custom.selectCustomMono()
+            self.custom.clickApproval()
+            self.custom.clickAddToCart()
 
         cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
         self.driver.get(cart_url)
@@ -60,16 +67,54 @@ class MasterOrderTests(unittest.TestCase):
         self.driver.get(clp_url)
         self.clp.clpSwatches()
         self.clp.clickCustomizeBtn()
-        self.custom.customModal()
+
         self.custom.customModal()
         self.custom.selectCustomMono()
         self.custom.clickApproval()
         self.custom.clickAddToCart()
+
         self.pdp.clickMiniCart()
 
         # self.checkout.checkoutBtn()
         self.checkout.shippingBtn()
         self.checkout.accountPayment('111')
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
+
+    def tests_CreateSingleCustomOrder(self):
+        product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        self.driver.get(product_url)
+        self.pdp.pdpSwatches('Black')
+
+        self.custom.pdpClickCustomButton()
+        self.custom.customModal()
+        self.custom.selectCustomMono()
+        self.custom.clickApproval()
+        self.custom.clickAddToCart()
+
+        self.pdp.clickMiniCart()
+        self.checkout.shippingBtn()
+        self.checkout.accountPayment('111')
+
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
+
+    def tests_CreateMultipleCustomOrder(self):
+        product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        self.driver.get(product_url)
+        self.pdp.pdpSwatches('Black')
+
+        self.custom.pdpClickCustomButton()
+        self.custom.customModal()
+        self.custom.selectCustomMono()
+        self.custom.clickApproval()
+        self.custom.clickIncrementButton()
+        self.custom.clickAddToCart()
+
+        self.pdp.clickMiniCart()
+        self.checkout.shippingBtn()
+        self.checkout.accountPayment('111')
+
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
 
