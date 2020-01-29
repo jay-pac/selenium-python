@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import *
+import os
 import time
 
 
@@ -18,6 +19,8 @@ class CustomizePage():
     _approve = '[data-yti="preview-approve"]'
     _add_to_cart = '[data-yti="add-to-cart"]'
     _swatch = '[data-yti={color}]'
+    _back_design = '[data-yti="design-back"]'
+    _custom_logo = '[data-yti="upload-logo"]'
     
     def pdpClickCustomButton(self):
         time.sleep(5)
@@ -44,12 +47,16 @@ class CustomizePage():
 
     def selectCustomDesign(self):
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="designs"]').click()
-        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="nascar"]').click()
-        self.driver.find_element(By.CSS_SELECTOR, '[data-name="Dale Sr."]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="yeti-nation"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-name="Built for the Wild - Classic"]').click()
 
     def selectCustomLogo(self):
+        filename = '20.bmp'
+        file_path = os.path.join(os.getcwd(), filename)
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
-        self.driver.find_element(By.NAME, 'upload-image').click()
+        self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
+        self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]')
+        time.sleep(3)
 
     def clickApproval(self):
         self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
@@ -81,4 +88,5 @@ class CustomizePage():
             x += 1
 
     def clickDecrementButton(self):
-        pass
+        decrement = self.driver.find_element(By.XPATH, '//button[@class="decrement"]')
+        decrement.click()
