@@ -41,25 +41,32 @@ class MixOrderTests(unittest.TestCase):
         checkout = CheckoutPage(driver)
         custom = CustomizePage(driver)
 
-        lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
+        lp.login('jason.pacitti@yeti.com', 'tester123')
 
-        product_urls = [
+        custom_product_urls = [
             '/drinkware/rambler-12-oz-bottle/YRAM12.html',
             '/drinkware/rambler-14-oz-mug/YRAM24.html']
 
-        for product_url in product_urls:
+        for product_url in custom_product_urls:
             driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
             custom.pdpClickCustomButton()
             custom.customModal()
-            custom.addCustomSwatches()
             custom.selectCustomMono()
             custom.clickApproval()
             custom.clickAddToCart()
 
-        driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
-        pdp.pdpSwatches()
-        time.sleep(5)
-        pdp.addToCart()
+        stock_product_urls = [
+            '/drinkware/rambler-12-oz-bottle/YRAM12.html',
+            '/drinkware/rambler-14-oz-mug/YRAM24.html']
+
+        for product_url in stock_product_urls:
+            driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US' + product_url)
+            pdp.addToCart()
+
+        # driver.get('https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html')
+        # pdp.pdpSwatches()
+        # time.sleep(5)
+        # pdp.addToCart()
 
         cart_url = 'https://staging-na-yeti.demandware.net/s/Yeti_US/en_US/cart'
         driver.get(cart_url)
