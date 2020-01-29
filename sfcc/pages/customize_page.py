@@ -52,11 +52,14 @@ class CustomizePage():
 
     def selectCustomLogo(self):
         filename = '20.bmp'
-        file_path = os.path.join(os.getcwd(), filename)
+        file_path = os.path.join(os.getcwd(),filename)
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
         self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
-        self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]')
+        self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]').click()
         time.sleep(3)
+
+    def clickBackDesign(self):
+        self.driver.find_element(By.CSS_SELECTOR, self._back_design).click()
 
     def clickApproval(self):
         self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
@@ -81,7 +84,6 @@ class CustomizePage():
 
     def clickIncrementButton(self):
         increment = self.driver.find_element(By.XPATH, '//button[@class="increment"]')
-        # increment.click()
         x = 1
         while x <= 5:
             increment.click()
