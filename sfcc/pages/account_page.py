@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -20,6 +21,7 @@ class AccountPage():
     _customer_psw = '//form[contains(@id,"RegistrationForm")]//input[contains(@id,"profile_login_password_")]'
     _confirm_psw = '//form[contains(@id,"RegistrationForm")]//input[contains(@id,"profile_login_passwordconfirm_")]'
     _form_sign_in = 'dwfrm_profile_confirm'
+
     _manage_address = '//a[contains(text(),"manage addresses")]'
     _address_button = '//a[@class="button-primary section-header-note address-create"]'
     _address_nickname = 'dwfrm_profile_address_addressid'
@@ -33,6 +35,7 @@ class AccountPage():
     _save_address = 'dwfrm_profile_address_save'
     _edit_address = '//a[@class="address-edit"]'
     _remove_address = '//a[@class="address-delete delete"]'
+
     _cc_view_all = '//a[contains(text(),"view all")]'
     _cc_add_cc = '//a[@class="section-header-note add-card button-primary"]'
     _cc_nickname = 'dwfrm_paymentinstruments_creditcards_newcreditcard_nickname'
@@ -42,7 +45,6 @@ class AccountPage():
     _cc_year = 'c-exyr'
     _cc_cvv = 'lbl-c-cvv'
     _cc_apply = 'applyBtn'
-
 
     def enterFirstName(self):
         fn = self.driver.find_element(By.ID, self._customer_fn)
@@ -76,36 +78,49 @@ class AccountPage():
         signup_btn.click()
 
     # Add Address methods
-    def clickManageAddress(self):
-        pass
+    def clickAddressLink(self):
+        self.driver.find_element(By.XPATH, '//a[contains(text(),"Address book")]').click()
 
-    def clickAddBtn(self):
-        pass
+    def clickManageAddress(self):
+        self.driver.find_element(By.XPATH, self._manage_address).click()
+
+    def clickAddressBtn(self):
+        address_btn = self.driver.find_element(By.ID, self._address_button)
+        address_btn.click()
 
     # Address Form
-    def enterAddressNicname(self):
-        pass
-
+    def enterAddressNickname(self):
+        nickname_field = self.driver.find_element(By.ID, self._address_nickname)
+        nickname_field.send_keys('')
+    # TODO:  Need to add a separate page class for account > create address
     def enterFirstName(self):
-        pass
+        fn_field = self.driver.find_element(By.ID, self._address_fn)
+        fn_field.send_keys('')
 
     def enterLastName(self):
-        pass
+        ln_field = self.driver.find_element(By.ID, self._address_ln)
+        ln_field.send_keys('')
 
     def enterAddress(self):
-        pass
+        address_field = self.driver.find_element(By.ID, self._address_1)
+        address_field.send_keys('')
 
     def enterCity(self):
-        pass
+        city_field = self.driver.find_element(By.ID, self._address_city)
+        city_field.send_keys('')
 
-    def selectState(self):
-        pass
+    def selectState(self, state='TX'):
+        select_state = Select(self.driver.find_element(By.ID, self._address_state))
+        select_state.select_by_value(state)
 
-    def enterZip(self):
-        pass
+    def enterZip(self, zip=78701):
+        zip_code = self.driver.find_element(By.ID, self._address_zip)
+        zip_code.send_keys(zip)
 
     def enterPhone(self):
-        pass
+        phone_num = self.driver.find_element(By.ID, self._address_phone)
+        phone_num.send_keys('5125551234')
 
     def clickSaveButton(self):
-        pass
+        save_btn = self.driver.find_element(By.ID, self._save_address)
+        save_btn.click()
