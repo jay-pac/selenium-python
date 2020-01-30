@@ -8,7 +8,7 @@ class AccountCreationTests(unittest.TestCase):
     def tests_create_account(self):
         base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login'
         driver = webdriver.Chrome()
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(5)
         driver.get(base_url)
 
         cookie = {
