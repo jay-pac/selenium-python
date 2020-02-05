@@ -35,7 +35,8 @@ Directory structure - ***NOTE: Base, Config, Utils will be implemented at a late
 |__utils: Base Loggers are kept in this folders
 ```
 
-### Logs - ***NOTE:  Will be implemented in later date***
+### Screehshots 
+***NOTE:  Will be implemented in later date***
 Log files are created with each test and if the test fails a screenshots is taken to  provide further information about what happened if they failed. The screenshots reside in the ./screenshots directory and can be viewed locally in your IDE
 
 ### Commands for Running Tests
