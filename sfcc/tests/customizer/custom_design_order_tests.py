@@ -54,3 +54,6 @@ class CustomDesignOrderTests(unittest.TestCase):
 
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
+
+    def tearDown(self):
+        self.driver.quit()
