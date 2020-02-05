@@ -15,9 +15,9 @@ https://www.python.org/downloads/
 
 ### Driver Setup
  A driver is separate executable that WebDriver uses to control Browsers.  Use links below to get started:
-   > [For Chrome](https://sites.google.com/a/chromium.org/chromedriver/getting-started)
+   > [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/getting-started)
 
-   > [For Firefox]( https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver)
+   > [Firefox Driver]( https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver)
    	
 #Note: Check Firefox + Chrome version & Selenium version compatibility before downloading geckodriver.
 
@@ -44,12 +44,13 @@ Log files are created with each test and if the test fails a screenshots is take
 a)py.test [options]
 
 	-s	used to display the output on the screen	
-	-v  increase verbosity
+	-v      increase verbosity
 	-h	help for more options 
 	-n 	used to run tests in parallel
-  example: `py.test -s -v sfcc/tests/login/login_tests.py
+  example: `py.test -s -v sfcc/tests/login/login_tests.py`
 
-### Documentation 
-- https://selenium-python.readthedocs.io/index.html
-- https://docs.pytest.org/en/latest/index.html
-- https://selenium.dev/documentation/en/
+### Documentation
+- [Offical Selenium Documentation](https://selenium.dev/documentation/en/)
+- [Selenium with Python](https://selenium-python.readthedocs.io/index.html)
+- [PyTest](https://docs.pytest.org/en/latest/index.html)
+- [WebDriver W3](https://www.w3.org/TR/webdriver1/)
