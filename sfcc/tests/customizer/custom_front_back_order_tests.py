@@ -43,10 +43,13 @@ class CustomOrderFrontBackOrderTests(unittest.TestCase):
 
         self.custom.pdpClickCustomButton()
         self.custom.customModal()
-        self.custom.selectCustomText()
+        self.custom.selectCustomMono()
+        self.custom.clickBackDesign()
+        self.custom.selectCustomMono()
         self.custom.clickApproval()
         self.custom.clickAddToCart()
 
+        self.pdp.clickMiniCart()
         self.checkout.shippingBtn()
         self.checkout.accountPayment('111')
 

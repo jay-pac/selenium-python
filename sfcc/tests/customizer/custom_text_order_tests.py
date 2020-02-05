@@ -43,9 +43,7 @@ class CustomTextOrderTests(unittest.TestCase):
 
         self.custom.pdpClickCustomButton()
         self.custom.customModal()
-        self.custom.selectCustomMono()
-        self.custom.clickBackDesign()
-        self.custom.selectCustomMono()
+        self.custom.selectCustomText()
         self.custom.clickApproval()
         self.custom.clickAddToCart()
 
