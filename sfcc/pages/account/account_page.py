@@ -1,11 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import *
-import time
-from datetime import datetime
 
 
 class AccountPage():
@@ -14,74 +7,84 @@ class AccountPage():
         self.driver = driver
 
     # Locators
-    _manage_address = '//a[contains(text(),"manage addresses")]'
-    _address_button = '//a[@class="button-primary section-header-note address-create"]'
-    _address_nickname = 'dwfrm_profile_address_addressid'
-    _address_fn = 'dwfrm_profile_address_firstname'
-    _address_ln = 'dwfrm_profile_address_lastname'
-    _address_1 = 'dwfrm_profile_address_address1'
-    _address_city = 'dwfrm_profile_address_city'
-    _address_state = 'dwfrm_profile_address_states_state_chosen'
-    _address_zip = 'dwfrm_profile_address_postal'
-    _address_phone = 'dwfrm_profile_address_phone'
-    _save_address = 'dwfrm_profile_address_save'
-    _edit_address = '//a[@class="address-edit"]'
-    _remove_address = '//a[@class="address-delete delete"]'
+    _account_dash_link = '//a[contains(text(),"Account dashboard")]'
+    _profile_link = '//a[contains(text(),"Profile")]'
+    _address_book_link = '//a[contains(text(),"Address book")]'
+    _saved_cc_link = '//a[contains(text(),"Saved credit cards")]'
+    _order_history_link = '//a[contains(text(),"Order history")]'
+    _my_wishlist_link = '//a[contains(text(),"My Wishlist")]'
+    _product_regist_link = '//a[contains(text(),"Product registration")]'
+    _logout_button = '//button[@class="button-primary log-out-button"]'
 
-    _cc_view_all = '//a[contains(text(),"view all")]'
-    _cc_add_cc = '//a[@class="section-header-note add-card button-primary"]'
-    _cc_nickname = 'dwfrm_paymentinstruments_creditcards_newcreditcard_nickname'
-    _cc_cardnumber = 'c-cardnumber'
-    _cc_name = 'c-cardname'
-    _cc_month = 'c-exmth'
-    _cc_year = 'c-exyr'
-    _cc_cvv = 'lbl-c-cvv'
-    _cc_apply = 'applyBtn'
+    _faq_link = '//a[@class="service-link"][contains(text(),"FAQ")]'
+    _help_link = '//a[@class="service-link"][contains(text(),"Help")]'
+    _contact_link = '//a[@class="service-link"][contains(text(),"Contact")]'
 
-    # Add Address methods
+    _order_history_viewall_link = '//div[@class="data-box data-box-orders"]//a[contains(text(),"view all")]'
+    _profile_edit_link = '//a[contains(text(),"Edit")]'
+    _cc_viewall_link = '//div[@class="data-box-info"]//a[contains(text(),"view all")]'
+    _address_manage_link = '//a[contains(text(),"manage addresses")]'
+
+    # My Account - Left Navigation Links
+    def clickAccountDashLink(self):
+        account_dash_link = self.driver.find_element(By.XPATH, self._account_dash_link)
+        account_dash_link.click()
+
+    def clickProfileLink(self):
+        profile_link = self.driver.find_element(By.XPATH, self._profile_link)
+        profile_link.click()
+
     def clickAddressLink(self):
-        self.driver.find_element(By.XPATH, '//a[contains(text(),"Address book")]').click()
+        address_link = self.driver.find_element(By.XPATH, self._address_book_link)
+        address_link.click()
+
+    def clickSavedCCLink(self):
+        saved_cc_link = self.driver.find_element(By.XPATH, self._saved_cc_link)
+        saved_cc_link.click()
+
+    def clickOrderHistoryLink(self):
+        orderhistory_link = self.driver.find_element(By.XPATH, self._order_history_link)
+        orderhistory_link.click()
+
+    def clickMyWishListLink(self):
+        my_wishlist_link = self.driver.find_element(By.XPATH, self._my_wishlist_link)
+        my_wishlist_link.click()
+
+    def clickProductRegistLink(self):
+        product_regist_link = self.driver.find_element(By.XPATH, self._product_regist_link)
+        product_regist_link.click()
+
+    def clickLogoutBtn(self):
+        logout_btn = self.driver.find_element(By.XPATH, self._logout_button)
+        logout_btn.click()
+
+    # Customer Support -  Left Navigation
+    def clickFaqLink(self):
+        faq_link = self.driver.find_element(By.XPATH, self._faq_link)
+        faq_link.click()
+
+    def clickHelpLink(self):
+        help_link = self.driver.find_element(By.XPATH, self._help_link)
+        help_link.click()
+
+    def clickContactLink(self):
+        contact_link = self.driver.find_element(By.XPATH, self._contact_link)
+        contact_link.click()
+
+    # Account Overview - Section Links
+    def clickOrderHistoryViewAll(self):
+        order_history_viewall = self.driver.find_element(By.XPATH, self._order_history_viewall_link)
+        order_history_viewall.click()
+
+    def clickProfileEdit(self):
+        profile_edit = self.driver.find_element(By.XPATH, self._profile_edit_link)
+        profile_edit.click()
+
+    def clickCCViewAll(self):
+        cc_viewall = self.driver.find_element(By.XPATH, self._cc_viewall_link)
+        cc_viewall.click()
 
     def clickManageAddress(self):
-        self.driver.find_element(By.XPATH, self._manage_address).click()
+        manage_address = self.driver.find_element(By.XPATH, self._address_manage_link)
+        manage_address.click()
 
-    def clickAddressBtn(self):
-        address_btn = self.driver.find_element(By.ID, self._address_button)
-        address_btn.click()
-
-    # Address Form
-    def enterAddressNickname(self):
-        nickname_field = self.driver.find_element(By.ID, self._address_nickname)
-        nickname_field.send_keys('')
-    # TODO:  Need to add a separate page class for account > create address
-    def enterFirstName(self):
-        fn_field = self.driver.find_element(By.ID, self._address_fn)
-        fn_field.send_keys('')
-
-    def enterLastName(self):
-        ln_field = self.driver.find_element(By.ID, self._address_ln)
-        ln_field.send_keys('')
-
-    def enterAddress(self):
-        address_field = self.driver.find_element(By.ID, self._address_1)
-        address_field.send_keys('')
-
-    def enterCity(self):
-        city_field = self.driver.find_element(By.ID, self._address_city)
-        city_field.send_keys('')
-
-    def selectState(self, state='TX'):
-        select_state = Select(self.driver.find_element(By.ID, self._address_state))
-        select_state.select_by_value(state)
-
-    def enterZip(self, zip=78701):
-        zip_code = self.driver.find_element(By.ID, self._address_zip)
-        zip_code.send_keys(zip)
-
-    def enterPhone(self):
-        phone_num = self.driver.find_element(By.ID, self._address_phone)
-        phone_num.send_keys('5125551234')
-
-    def clickSaveButton(self):
-        save_btn = self.driver.find_element(By.ID, self._save_address)
-        save_btn.click()
