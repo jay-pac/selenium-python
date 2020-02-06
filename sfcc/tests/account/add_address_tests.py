@@ -41,8 +41,7 @@ class AddAddressTests(unittest.TestCase):
         self.adp.enterZip()
         self.adp.enterPhone()
         self.adp.clickSaveButton()
-        self.adp.verifyAddressCreate()
-        # assert self.adp.verifyAddressCreate() == 'QA AUTOMATION'
+        assert self.adp.verifyAddressCreate() == 'QA AUTOMATION'
 
     def tearDown(self):
         self.adp.clickRemoveLink()
