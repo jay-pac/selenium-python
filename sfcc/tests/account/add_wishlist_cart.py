@@ -46,5 +46,8 @@ class AddWishListCartTests(unittest.TestCase):
         self.checkout.shippingBtn()
         self.checkout.accountPayment('111')
 
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        print(order_number)
+
     def tearDown(self):
         self.driver.quit()

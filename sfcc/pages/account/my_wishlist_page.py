@@ -12,8 +12,10 @@ class MyWishListPage():
     _remove_link = 'dwfrm_wishlist_items_i0_deleteItem'
 
     def clickAddToCart(self):
-        add_cart_btn = self.driver.find_element(By.NAME, self._add_cart)
-        add_cart_btn.click()
+        # document.getElementsByName('dwfrm_wishlist_items_i0_addToCart')
+        self.driver.execute_script("document.getElementByName('dwfrm_wishlist_items_i0_addToCart').click();")
+        # add_cart_btn = self.driver.find_element(By.NAME, self._add_cart)
+        # add_cart_btn.click()
 
     def clickEditLink(self):
         edit_link = self.driver.find_element(By.NAME, self._edit_link)
