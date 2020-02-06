@@ -90,5 +90,4 @@ class AddressBookPage():
 
     def verifyAddressCreate(self):
         address = self.driver.find_element(By.XPATH, '//div[@class="mini-address-title"]').text
-        assert address == 'QA AUTOMATION'
         return address
