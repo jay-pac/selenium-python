@@ -14,32 +14,9 @@ class ProductPage():
     _pdp_add_to_cart = 'add-to-cart'
     _swatch = '[data-yti={color}]'
     _add_qty = 'input[class="quantity-input custom-quantity-input-pdp valid"]'
+    _add_my_fav = '//a[contains(@class,"add-btn")]'
 
     def addToCart(self):
-        # add_cart_btn = self.driver.find_element(By.ID, self._pdp_add_to_cart)
-        # action = ActionChains(self.driver)
-        # action.move_to_element(add_cart_btn)
-        # action.click(add_cart_btn).perform()
-
-        # wait = WebDriverWait(self.driver, 10, poll_frequency=1, 
-        # ignored_exceptions=[NoSuchElementException,
-        # ElementNotVisibleException,
-        # ElementNotSelectableException,
-        # ElementClickInterceptedException,
-        # StaleElementReferenceException])
-        # add_cart_btn = wait.until(EC.element_to_be_clickable((By.XPATH, self._pdp_add_to_cart)))
-        # add_cart_btn.click()
-        
-        # attempts=0
-        # while attempts > 2:
-        #     try:
-        #         add_cart_btn = self.driver.find_element(By.ID, self._pdp_add_to_cart)
-        #         add_cart_btn.click()
-        #     except:
-        #         print(f'element {add_cart_btn} does not appear on page')
-            
-        #     attempts += 0
-        #     return attempts
         self.driver.execute_script("document.getElementById('add-to-cart').click();")
 
     def clickMiniCart(self):
@@ -60,3 +37,7 @@ class ProductPage():
     def pdpQuantityField(self, qty=4):
         qty_field = self.driver.find_element(By.CSS_SELECTOR, self._add_qty)
         qty_field.send_keys(qty)
+
+    def clickAddToWishlist(self):
+        wishlist_btn = self.driver.find_element(By.XPATH, self._add_my_fav)
+        wishlist_btn.click()
