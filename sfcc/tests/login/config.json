@@ -1,0 +1,5 @@
+{
+  "stg-us": "https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/",
+  "dev-us":"https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/",
+  "prod-us": "https://www.yeti.com/en_US/"
+}
