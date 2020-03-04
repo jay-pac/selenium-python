@@ -87,4 +87,3 @@ class AccountPage():
     def clickManageAddress(self):
         manage_address = self.driver.find_element(By.XPATH, self._address_manage_link)
         manage_address.click()
-

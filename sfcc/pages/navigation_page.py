@@ -94,11 +94,9 @@ class NavigationPage():
     _yeti_chicao = '//a[contains(@class,"secondary-nav-link-yeti")][contains(text(),"Chicago")]'
     _yeti_charleston = '//a[contains(@class,"secondary-nav-link-yeti")][contains(text(),"Charleston")]'
 
-
-
     def mouseOverCoolers(self):
         self.cooler_menu = self.driver.find_element(By.XPATH, self._primary_cooler)
-    
+
     def mouseOverDrinkware(self):
         self.drinkware_menu = self.driver.find_element(By.XPATH, self._primary_drinkware)
 
@@ -127,9 +125,9 @@ class NavigationPage():
             actions.click(nav_item_hardcoolers).perform()
         except NoSuchElementException:
             return False
-        
-        assert "Tundra Ice Chests" in self.driver.title  
-    
+
+        assert "Tundra Ice Chests" in self.driver.title
+
     def clickTumbler(self):
         nav_item_tumblers = self.driver.find_element(By.ID, self._tumblers)
         actions = ActionChains(self.driver)
@@ -140,20 +138,20 @@ class NavigationPage():
             actions.click(nav_item_tumblers).perform()
         except NoSuchElementException:
             return False
-        
-        assert "Tumblers" in self.driver.title  
-    
+
+        assert "Tumblers" in self.driver.title
+
     def clickBags(self):
         pass
-    
+
     def clickGear(self):
         pass
-    
+
     def clickAccessories(self):
         pass
-    
+
     def clickCustom(self):
         pass
-    
+
     def clickThisYeti(self):
         pass

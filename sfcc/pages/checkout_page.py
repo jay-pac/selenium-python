@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *
+from datetime import datetime
 import time
 
 
@@ -10,7 +11,7 @@ class CheckoutPage():
 
     def __init__(self, driver):
         self.driver = driver
-    
+
     # Locators
     _checkout = 'dwfrm_cart_checkoutCart'
     _mini_checkout = '//div[@class="mini-cart-opened"]//a[@class="button-primary full-width mini-cart-link-checkout"][contains(text(),"Check out")]'
@@ -34,8 +35,10 @@ class CheckoutPage():
     _cvv = 'c-cvv'
     _place_order = 'button[name="dwfrm_billing_save"]'
     _cvv_registered = 'input[class="input-text   required"]'
-   
-    def checkoutBtn (self):
+    _customer_pwd = '//input[contains(@id, "dwfrm_singleshipping_profile_password_")]'
+    _invalid_pwd_message = '//div[contains(@class, "dwfrm_singleshipping_profile_password_")]//span[contains(@id, "dwfrm_singleshipping_profile_password_")]'
+
+    def checkoutBtn(self):
         checkout_btn = self.driver.find_element(By.NAME, self._checkout)
         checkout_btn.click()
 
@@ -57,7 +60,7 @@ class CheckoutPage():
         checkout_guest_btn = self.driver.find_element(By.XPATH, self._guest_checkout)
         checkout_guest_btn.click()
 
-    def shippingAddress(self, firstname, lastname, add1, city, state, zip, phone, email):
+    def shippingAddress(self, firstname, lastname, add1, city, state, zip, phone):
         fn = self.driver.find_element(By.ID, self._first_name)
         fn.send_keys(firstname)
 
@@ -80,8 +83,25 @@ class CheckoutPage():
         phone_field = self.driver.find_element(By.ID, self._phone_num)
         phone_field.send_keys(phone)
 
+    def enterEmail(self):
+        timestamp = datetime.now().strftime('%y%m%d%H%M')
+        self.email_address = f'qa{timestamp}@yeti.com'
         email_field = self.driver.find_element(By.ID, self._email)
-        email_field.send_keys(email)
+        email_field.send_keys(self.email_address)
+
+    def enterPassword(self):
+        self.pwd = 'T3ster#!@'
+        pwd_field = self.driver.find_element(By.XPATH, self._customer_pwd)
+        pwd_field.send_keys(self.pwd)
+
+    def enterInvalidPassword(self):
+        self.invalid_pwd = 'Tester123'
+        pwd_field = self.driver.find_element(By.XPATH, self._customer_pwd)
+        pwd_field.send_keys(self.invalid_pwd)
+
+    def verifyPwdError(self):
+        error_message = self.driver.find_element(By.XPATH, self._invalid_pwd_message).text
+        return error_message
 
     def shippingBtn(self):
         shipping_continue_btn = self.driver.find_element(By.NAME, self._continue)
@@ -113,9 +133,6 @@ class CheckoutPage():
 
         self.driver.switch_to.default_content()
 
-        # place_order_btn = WebDriverWait(self.driver, 20, poll_frequency=1).until(
-        #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[name="dwfrm_billing_save"]')))
-        # place_order_btn.click()
         time.sleep(5)
         place_order_btn = self.driver.find_element(By.CSS_SELECTOR, self._place_order)
         place_order_btn.click()

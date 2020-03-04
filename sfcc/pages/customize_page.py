@@ -21,7 +21,7 @@ class CustomizePage():
     _swatch = '[data-yti={color}]'
     _back_design = '[data-yti="design-back"]'
     _custom_logo = '[data-yti="upload-logo"]'
-    
+
     def pdpClickCustomButton(self):
         time.sleep(5)
         add_custom_btn = self.driver.find_element(By.ID, self._custom_btn)
@@ -34,7 +34,7 @@ class CustomizePage():
             self.driver.switch_to.frame(self.driver.find_element(By.CSS_SELECTOR, 'iframe[data-ycs="customizer"]'))
         except NoSuchElementException:
             return False
-            
+
         time.sleep(5)
 
     def selectCustomText(self):
@@ -52,7 +52,7 @@ class CustomizePage():
 
     def selectCustomLogo(self):
         filename = '20.bmp'
-        file_path = os.path.join(os.getcwd(),filename)
+        file_path = os.path.join(os.getcwd(), filename)
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
         self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
         self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]').click()
