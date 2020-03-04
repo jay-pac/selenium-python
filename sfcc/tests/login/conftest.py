@@ -35,6 +35,9 @@ def setup(request):
             'secure': False,
             'value': 'true'}
         driver.add_cookie(cookie)
+        driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
 
     elif env_name == 'stg-us':
         driver.get('https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login')
@@ -46,6 +49,9 @@ def setup(request):
             'secure': False,
             'value': 'true'}
         driver.add_cookie(cookie)
+        driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
 
     elif env_name == 'prod-us':
         driver.get('https://www.yeti.com/en_US/login')
@@ -57,10 +63,9 @@ def setup(request):
             'secure': False,
             'value': 'true'}
         driver.add_cookie(cookie)
-
-    driver.implicitly_wait(10)
-    driver.refresh()
-    driver.maximize_window()
+        driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
 
     request.cls.driver = driver
     yield
