@@ -37,6 +37,9 @@ def setup(request):
             'value': 'true'}
         driver.add_cookie(cookie)
         driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
+
         lp = LoginPage(driver)
         lp.login('jason.pacitti@yeti.com', 'T3ster#!')
 
@@ -54,9 +57,11 @@ def setup(request):
             'value': 'true'}
         driver.add_cookie(cookie)
         driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
 
         lp = LoginPage(driver)
-        lp.login('yabba_dabba@yeti.com', 'Tester123')
+        lp.login('jason.pacitti@yeti.com', 'T3ster#!')
 
         product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
@@ -72,15 +77,14 @@ def setup(request):
             'value': 'true'}
         driver.add_cookie(cookie)
         driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
 
         lp = LoginPage(driver)
         lp.login('jason.pacitti@yeti.com', 'T3ster#!')
 
         product_url = 'https://www.yeti.com/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
-
-    driver.implicitly_wait(10)
-    driver.maximize_window()
 
     request.cls.driver = driver
     yield
