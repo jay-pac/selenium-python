@@ -14,7 +14,7 @@ def pytest_addoption(parser):
     )
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
@@ -41,7 +41,7 @@ def setup(request):
         driver.implicitly_wait(10)
 
         lp = LoginPage(driver)
-        lp.login('jason.pacitti@yeti.com', 'T3ster#!')
+        lp.login('qa_dev000@yeti.com', 'T3ster#!@')
 
         product_url = 'https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
