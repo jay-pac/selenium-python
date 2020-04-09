@@ -19,6 +19,7 @@ class AddressBookPage():
     _address_fn = 'dwfrm_profile_address_firstname'
     _address_ln = 'dwfrm_profile_address_lastname'
     _address_1 = 'dwfrm_profile_address_address1'
+    _address_2 = 'dwfrm_profile_address_address2'
     _address_city = 'dwfrm_profile_address_city'
     _address_state = 'dwfrm_profile_address_states_state'
     _address_zip = 'dwfrm_profile_address_postal'
@@ -51,9 +52,13 @@ class AddressBookPage():
         ln_field = self.driver.find_element(By.ID, self._address_ln)
         ln_field.send_keys(ln)
 
-    def enterAddress(self, address='7601 Southwest Pkwy'):
+    def enterAddress(self, address='617 W 6th St'):
         address_field = self.driver.find_element(By.ID, self._address_1)
         address_field.send_keys(address)
+
+    def enterAddress2(self, address='Apt. 101'):
+        address_field_two = self.driver.find_element(By.ID, self._address_2)
+        address_field_two.send_keys(address)
 
     def enterCity(self, city='Austin'):
         city_field = self.driver.find_element(By.ID, self._address_city)
@@ -63,7 +68,7 @@ class AddressBookPage():
         select_state = Select(self.driver.find_element(By.ID, self._address_state))
         select_state.select_by_value(state)
 
-    def enterZip(self, zip=78735):
+    def enterZip(self, zip=78701):
         zip_code = self.driver.find_element(By.ID, self._address_zip)
         zip_code.send_keys(zip)
 
