@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.mark.usefixtures("setup")
-class AccountCreationTests():
+class TestAccountCreation():
 
     def tests_create_account(self):
         signup = SignUpPage(self.driver)
@@ -15,5 +15,3 @@ class AccountCreationTests():
         signup.enterPassword()
         signup.confirmPassword()
         signup.clickSignUpBtn()
-
-
