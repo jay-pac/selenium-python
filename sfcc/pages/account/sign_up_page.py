@@ -1,9 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-import time
 from datetime import datetime
 
 
@@ -39,10 +34,10 @@ class SignUpPage():
     def confirmEmail(self):
         email_field = self.driver.find_element(By.ID, self._confirm_email)
         email_field.send_keys(self.email_address)
-        print(self.email_address)
+        print('Here is the email address ' + self.email_address)
 
     def enterPassword(self):
-        self.pwd = 'T3ster#!@'
+        self.pwd = 'T3ster#!'
         pwd_field = self.driver.find_element(By.XPATH, self._customer_pwd)
         pwd_field.send_keys(self.pwd)
 
@@ -66,3 +61,10 @@ class SignUpPage():
     def clickSignUpBtn(self):
         signup_btn = self.driver.find_element(By.NAME, self._form_sign_in)
         signup_btn.click()
+
+    # TODO:  Add Asseration logic
+    def verifySuccesfulLogin(self):
+        if 'My Account Home' in self.driver.title:
+            return True
+        else:
+            return False
