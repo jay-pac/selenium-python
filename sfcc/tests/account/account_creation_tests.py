@@ -15,3 +15,5 @@ class TestAccountCreation():
         signup.enterPassword()
         signup.confirmPassword()
         signup.clickSignUpBtn()
+
+        assert 'My Account Home' in self.driver.title
