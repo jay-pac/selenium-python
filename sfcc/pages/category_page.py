@@ -11,10 +11,10 @@ class CategoryPage():
         self.driver = driver
 
     # Locators
-    _product_tile = '//div[@data-product-name="Rambler Colster"]//img[@class="product-tile-image"]'
-    _add_to_cart = '//div[@data-product-name="Rambler Colster"]//button[@class="button button-primary add-to-cart"]'
-    _customize = '//div[@data-product-name="Rambler Colster"]//span[@class="customizer-button-text"]'
-    _swatch = '//div[@data-product-name="Rambler Colster"]//a[@data-yti="black"]'
+    _product_tile = '//div[@data-product-name="Rambler 12 oz Colster Can Insulator"]//img[@class="product-tile-image"]'
+    _add_to_cart = '//div[@data-product-name="Rambler 12 oz Colster Can Insulator"]//button[@class="button button-primary add-to-cart"]'
+    _customize = '//div[@data-product-name="Rambler 12 oz Colster Can Insulator"]//span[@class="customizer-button-text"]'
+    _swatch = '//div[@data-product-name="Rambler 12 oz Colster Can Insulator"]//a[@data-yti="seafoam"]'
 
     def clickProduct(self):
         product_tile = self.driver.find_element(By.XPATH, self._product_tile)
