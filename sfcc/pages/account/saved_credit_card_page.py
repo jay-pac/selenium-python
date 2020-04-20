@@ -54,10 +54,6 @@ class SavedCreditCardPage():
         self.driver.switch_to.default_content()
         self.driver.execute_script('document.getElementById("applyBtn").click();')
 
-    def verifySavedCC(self):
-        saved_cc = self.driver.find_element(By.XPATH, self._saved_cc).text
-        return saved_cc
-
     def clickRemoveLink(self):
         remove_link = self.driver.find_element(By.XPATH, self._remove_cc)
         remove_link.click()
@@ -69,3 +65,7 @@ class SavedCreditCardPage():
     def clickAddCardLink(self):
         add_card = self.driver.find_element(By.XPATH, self._add_cc_link)
         add_card.click()
+
+    def verifySavedCC(self):
+        saved_cc = self.driver.find_element(By.XPATH, self._saved_cc).text
+        return saved_cc
