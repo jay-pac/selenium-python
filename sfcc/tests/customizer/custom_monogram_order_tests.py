@@ -19,6 +19,7 @@ class TestCustomMonogramOrder():
         custom.customModal()
         custom.selectCustomMono()
         custom.clickApproval()
+        custom.clickIncrementButton()
         custom.clickAddToCart()
 
         pdp.clickMiniCart()
