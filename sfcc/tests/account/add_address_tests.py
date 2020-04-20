@@ -10,7 +10,7 @@ class TestAddAddress():
         self.lp = LoginPage(self.driver)
         self.adp = AddressBookPage(self.driver)
 
-        self.lp.login('qa2004090940@yeti.com', 'T3ster#!@')
+        self.lp.login('qa2004151252@yeti.com', 'T3ster#!@')
 
         self.adp.clickAddressLink()
         self.adp.clickAddressBtn()
@@ -25,7 +25,7 @@ class TestAddAddress():
         self.adp.clickSaveButton()
         assert self.adp.verifyAddressCreate() == 'QA AUTOMATION'
 
-    # def tearDown(self):
-    #     self.adp.clickRemoveLink()
-    #     self.adp.clickDeleteModal()
-    #     self.driver.quit()
+    def tearDown(self):
+        self.adp.clickRemoveLink()
+        self.adp.clickDeleteModal()
+        self.driver.quit()

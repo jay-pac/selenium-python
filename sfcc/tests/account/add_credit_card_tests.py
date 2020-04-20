@@ -13,7 +13,7 @@ class TestAddCreditCard():
         self.ap = AccountPage(self.driver)
         self.sccp = SavedCreditCardPage(self.driver)
 
-        self.lp.login('yabba_dabba@yeti.com', 'T3ster#!')
+        self.lp.login('qa2004151252@yeti.com', 'T3ster#!@')
         self.ap.clickSavedCCLink()
         self.sccp.clickAddCCBtn()
         self.sccp.enterCCNickName()
