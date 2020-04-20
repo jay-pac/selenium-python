@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import *
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
 import unittest
@@ -22,18 +21,6 @@ class GuestCheckoutTest(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.get(base_url)
 
-        cookie = {
-            'domain': 'staging-na-yeti.demandware.net',
-            'httpOnly': False,
-            'name': 'consent-accepted',
-            'path': '/',
-            'secure': False,
-            'value': 'true'}
-        driver.add_cookie(cookie)
-        driver.refresh()
-
-        driver.maximize_window()
-
         pdp = ProductPage(driver)
         pdp.addToCart()
         pdp.clickMiniCart()
@@ -42,7 +29,7 @@ class GuestCheckoutTest(unittest.TestCase):
         checkout.checkoutAsGuest()
 
         checkout.shippingAddress(
-            'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555', 'jason.pacitti@yeti.com')
+            'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555')
 
         checkout.shippingBtn()
 
