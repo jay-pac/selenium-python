@@ -23,6 +23,8 @@ def setup(request):
         driver = webdriver.Firefox()
     elif browser_name == "IE":
         print("IE driver is not an option")
+    elif browser_name == 'safari':
+        driver = webdriver.Safari()
 
     env_name = request.config.getoption("env_name")
     if env_name == "dev-us":
