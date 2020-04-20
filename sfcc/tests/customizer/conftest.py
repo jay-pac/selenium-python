@@ -26,7 +26,7 @@ def setup(request):
         print("IE driver is not an option")
 
     env_name = request.config.getoption("env_name")
-    if env_name == "dev-us":
+    if env_name == 'dev-us':
         driver.get('https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/login')
         cookie = {
             'domain': 'development-na-yeti.demandware.net',
@@ -61,7 +61,7 @@ def setup(request):
         driver.implicitly_wait(10)
 
         lp = LoginPage(driver)
-        lp.login('jason.pacitti@yeti.com', 'T3ster#!')
+        lp.login('jason.pacitti@yeti.com', 'T3ster@!')
 
         product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
