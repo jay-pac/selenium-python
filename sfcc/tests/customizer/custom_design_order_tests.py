@@ -1,6 +1,4 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from sfcc.pages.login.login_page import LoginPage
 from sfcc.pages.customize_page import CustomizePage
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
