@@ -88,6 +88,7 @@ class CheckoutPage():
         self.email_address = f'qa{timestamp}@yeti.com'
         email_field = self.driver.find_element(By.ID, self._email)
         email_field.send_keys(self.email_address)
+        print('Here is the email address ' + self.email_address)
 
     def enterPassword(self):
         self.pwd = 'T3ster#!@'

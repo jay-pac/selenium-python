@@ -1,13 +1,12 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
-import unittest
+import pytest
 
+@pytest.mark.usefixtures("setup")
+class TestGuestCheckout():
 
-class GuestCheckoutTest(unittest.TestCase):
-
-    def tests_guest_checkout(self):
+    def test_guest_checkout(self):
         """Test Scenario: 
         1. Add single Stock glassware from PDP
         2. Click on Add To Cart button
@@ -16,16 +15,12 @@ class GuestCheckoutTest(unittest.TestCase):
         5. Checkout As Guest
         6. Place order to complete 
         """
-        base_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
-        driver = webdriver.Chrome()
-        driver.implicitly_wait(10)
-        driver.get(base_url)
+        pdp = ProductPage(self.driver)
+        checkout = CheckoutPage(self.driver)
 
-        pdp = ProductPage(driver)
         pdp.addToCart()
         pdp.clickMiniCart()
 
-        checkout = CheckoutPage(driver)
         checkout.checkoutAsGuest()
 
         checkout.shippingAddress(
@@ -35,5 +30,5 @@ class GuestCheckoutTest(unittest.TestCase):
 
         checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
-        order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
+        order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
