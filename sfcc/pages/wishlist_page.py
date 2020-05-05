@@ -8,7 +8,7 @@ class WishListPage():
         self.driver = driver
 
     # Locators
-    _add_wishlist = '//a[@class="add-btn "][@data-master-sku="YRAMCOLSTER"]'
+    _add_wishlist = '//a[@class="add-btn "][@data-master-sku="YRAMCTWO"]'
     _email_field = '//div[contains(@id, "dialog-container")]//input[contains(@id,"dwfrm_login_username_")]'
     _pwd_field = '//div[contains(@id, "dialog-container")]//input[contains(@id,"dwfrm_login_password_")]'
     _continue_btn = '//div[@id="dialog-container"]//button[@class="button-primary wishlist-dialog-container__button wishlist-login__continue"]'

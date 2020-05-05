@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *
 from datetime import datetime
 import time
@@ -37,6 +35,7 @@ class CheckoutPage():
     _cvv_registered = 'input[class="input-text   required"]'
     _customer_pwd = '//input[contains(@id, "dwfrm_singleshipping_profile_password_")]'
     _invalid_pwd_message = '//div[contains(@class, "dwfrm_singleshipping_profile_password_")]//span[contains(@id, "dwfrm_singleshipping_profile_password_")]'
+    _verified_address = '//button[@class="button-primary use-suggested"]'
 
     def checkoutBtn(self):
         checkout_btn = self.driver.find_element(By.NAME, self._checkout)
@@ -144,3 +143,7 @@ class CheckoutPage():
 
         place_order_btn = self.driver.find_element(By.CSS_SELECTOR, self._place_order)
         place_order_btn.click()
+
+    def clickVerifyAddress(self):
+        address = self.driver.find_element(By.XPATH, self._verified_address)
+        address.click()
