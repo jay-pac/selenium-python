@@ -25,7 +25,8 @@ class TestAddAddress():
         self.adp.clickSaveButton()
         assert self.adp.verifyAddressCreate() == 'QA AUTOMATION'
 
-    def tearDown(self):
-        self.adp.clickRemoveLink()
-        self.adp.clickDeleteModal()
-        self.driver.quit()
+    # This is no longer needed.  I will need to add either another add it to existing conftest or create a new one
+    # def tearDown(self):
+    #     self.adp.clickRemoveLink()
+    #     self.adp.clickDeleteModal()
+    #     self.driver.quit()
