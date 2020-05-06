@@ -3,6 +3,7 @@ from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
 import pytest
 
+
 @pytest.mark.usefixtures("setup")
 class TestGuestCheckout():
 
@@ -26,7 +27,10 @@ class TestGuestCheckout():
         checkout.shippingAddress(
             'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555')
 
+        checkout.enterEmail()
+
         checkout.shippingBtn()
+        checkout.clickVerifyAddress()
 
         checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
