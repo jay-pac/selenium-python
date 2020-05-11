@@ -24,9 +24,9 @@ class TestClpAddStockCheckout():
         clp.clpSwatches()
         clp.clickAddToCartBtn()
         pdp.clickMiniCart() # Need to remove mini cart actions from Product page class.  Need to create a new page class for it
-        
-        checkout.signIn('jason.pacitti@yeti.com', 'tester123')
+
         checkout.shippingBtn()
+        checkout.clickVerifyAddress()
         checkout.accountPayment('111')
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
