@@ -34,6 +34,7 @@ class TestCustomItemCheckoutTest():
             'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555')
 
         checkout.shippingBtn()
+        checkout.clickVerifyAddress()
 
         checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
