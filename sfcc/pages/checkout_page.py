@@ -145,5 +145,8 @@ class CheckoutPage():
         place_order_btn.click()
 
     def clickVerifyAddress(self):
-        address = self.driver.find_element(By.XPATH, self._verified_address)
-        address.click()
+        try:
+            address = self.driver.find_element(By.XPATH, self._verified_address)
+            address.click()
+        except:
+            pass
