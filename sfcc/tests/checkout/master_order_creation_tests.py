@@ -35,13 +35,12 @@ class MasterOrderTests(unittest.TestCase):
         self.custom = CustomizePage(self.driver)
         self.clp = CategoryPage(self.driver)
 
-        self.lp.login('jason.pacitti@yeti.com', 'tester123')
+        self.lp.login('qa2005121119@yeti.com', 'T3ster#!')
 
     def tests_createMixedOrder(self):
         product_urls = [
             '/drinkware/rambler-18-oz-bottle/YRAM18.html?dwvar_YRAM18_color=seafoam&cgid=bottles#start=1',
             '/drinkware/rambler-24-oz-mug/YRAM24.html',
-            '/more-gear/boomer-4-dog-bowl/YB4DB.html',
             '/drinkware/rambler-10-oz-wine-tumbler/YRAMWINE10.html?dwvar_YRAMWINE10_color=white&cgid=drinkware#start=1',
             '/drinkware/rambler-20-oz-tumbler/YRAM20.html?dwvar_YRAM20_color=black&cgid=drinkware#start=1',
             '/drinkware/rambler-14-oz-mug/YRAM14.html?dwvar_YRAM14_color=navy&cgid=mugs#start=1']
@@ -58,6 +57,7 @@ class MasterOrderTests(unittest.TestCase):
         self.driver.get(cart_url)
         self.checkout.checkoutBtn()
         self.checkout.shippingBtn()
+        self.checkout.clickVerifyAddress()
         self.checkout.accountPayment('111')
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
@@ -75,8 +75,8 @@ class MasterOrderTests(unittest.TestCase):
 
         self.pdp.clickMiniCart()
 
-        # self.checkout.checkoutBtn()
         self.checkout.shippingBtn()
+        self.checkout.clickVerifyAddress()
         self.checkout.accountPayment('111')
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
         print(order_number)
@@ -94,6 +94,7 @@ class MasterOrderTests(unittest.TestCase):
 
         self.pdp.clickMiniCart()
         self.checkout.shippingBtn()
+        self.checkout.clickVerifyAddress()
         self.checkout.accountPayment('111')
 
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
@@ -113,6 +114,7 @@ class MasterOrderTests(unittest.TestCase):
 
         self.pdp.clickMiniCart()
         self.checkout.shippingBtn()
+        self.checkout.clickVerifyAddress()
         self.checkout.accountPayment('111')
 
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text

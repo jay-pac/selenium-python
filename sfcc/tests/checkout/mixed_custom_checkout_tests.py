@@ -1,11 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from sfcc.pages.login.login_page import LoginPage
-from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
 from sfcc.pages.customize_page import CustomizePage
 import unittest
-import time
 
 
 class MixOrderTests(unittest.TestCase):
@@ -40,7 +38,7 @@ class MixOrderTests(unittest.TestCase):
         checkout = CheckoutPage(driver)
         custom = CustomizePage(driver)
         
-        lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
+        lp.login('qa2005121119@yeti.com', 'T3ster#!')
 
         product_urls = [
             '/drinkware/rambler-18-oz-bottle/YRAM18.html',
@@ -60,6 +58,7 @@ class MixOrderTests(unittest.TestCase):
             driver.get(cart_url)
             checkout.checkoutBtn()
             checkout.shippingBtn()
+            checkout.clickVerifyAddress()
             checkout.accountPayment('111')
             order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
             print(order_number)

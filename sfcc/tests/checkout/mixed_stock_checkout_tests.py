@@ -4,7 +4,6 @@ from sfcc.pages.login.login_page import LoginPage
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
 import unittest
-import time
 
 
 class MixOrderTests(unittest.TestCase):
@@ -38,7 +37,7 @@ class MixOrderTests(unittest.TestCase):
         lp = LoginPage(driver)
         pdp = ProductPage(driver)
         checkout = CheckoutPage(driver)
-        lp.login('jason.pacitti011420@yeti.com', 'Tester456!')
+        lp.login('qa2005121119@yeti.com', 'T3ster#!')
 
         product_urls = [
             '/hard-coolers/roadie-20-cooler/YR20.html',
@@ -54,6 +53,7 @@ class MixOrderTests(unittest.TestCase):
             driver.get(cart_url)
             checkout.checkoutBtn()
             checkout.shippingBtn()
+            checkout.clickVerifyAddress()
             checkout.accountPayment('111')
             order_number = driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
             print(order_number)
