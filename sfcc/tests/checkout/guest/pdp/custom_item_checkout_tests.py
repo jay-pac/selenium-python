@@ -28,14 +28,13 @@ class TestCustomItemCheckoutTest():
         custom.clickAddToCart()
 
         pdp.clickMiniCart()
-        checkout.checkoutAsGuest()
 
+        checkout.checkoutAsGuest()
         checkout.shippingAddress(
             'John', 'Smith', '3100 Neal Street', 'Austin', 'TX', '78702', '512-555-5555')
-
+        checkout.enterEmail()
         checkout.shippingBtn()
         checkout.clickVerifyAddress()
-
         checkout.guestPayment('4847189499632248', 'John Smith', '111')
 
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text
