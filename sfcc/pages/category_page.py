@@ -21,11 +21,12 @@ class CategoryPage():
         product_tile.click()
 
     def clickAddToCartBtn(self):
-        time.sleep(5)
+        time.sleep(2)
         add_to_cart_btn = self.driver.find_element(By.XPATH, self._add_to_cart)
         add_to_cart_btn.click()
 
     def clickCustomizeBtn(self):
+        time.sleep(2)
         customize_btn = self.driver.find_element(By.XPATH, self._customize)
         customize_btn.click()
 
