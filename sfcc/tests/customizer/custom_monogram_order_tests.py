@@ -24,6 +24,7 @@ class TestCustomMonogramOrder():
 
         pdp.clickMiniCart()
         checkout.shippingBtn()
+        checkout.clickVerifyAddress()
         checkout.accountPayment('111')
 
         order_number = self.driver.find_element(By.XPATH, '//p[@class="order-number"]//a').text

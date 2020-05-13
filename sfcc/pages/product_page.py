@@ -18,6 +18,7 @@ class ProductPage():
         self.driver.execute_script("document.getElementById('add-to-cart').click();")
 
     def clickMiniCart(self):
+        time.sleep(1)
         self.driver.execute_script("document.querySelector('div.mini-cart a.mini-cart-link').click();")
 
         # TODO Need to remove logic to another Page class

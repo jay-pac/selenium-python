@@ -23,7 +23,7 @@ class CustomizePage():
     _custom_logo = '[data-yti="upload-logo"]'
 
     def pdpClickCustomButton(self):
-        time.sleep(5)
+        time.sleep(2)
         add_custom_btn = self.driver.find_element(By.ID, self._custom_btn)
         action = ActionChains(self.driver)
         action.move_to_element(add_custom_btn)
@@ -35,7 +35,7 @@ class CustomizePage():
         except NoSuchElementException:
             return False
 
-        time.sleep(5)
+        time.sleep(2)
 
     def selectCustomText(self):
         self.driver.find_element(By.CSS_SELECTOR, self._add_text).click()
@@ -56,13 +56,16 @@ class CustomizePage():
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
         self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
         self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]').click()
-        time.sleep(3)
+        time.sleep(2)
 
     def clickBackDesign(self):
         self.driver.find_element(By.CSS_SELECTOR, self._back_design).click()
 
     def clickApproval(self):
-        self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
+        approval = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self._approve)))
+        approval.click()
+        # self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
 
     def clickAddToCart(self):
         add_to_cart_btn = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
