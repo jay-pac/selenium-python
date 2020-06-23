@@ -27,7 +27,7 @@ def setup(request):
 
     env_name = request.config.getoption("env_name")
     if env_name == 'dev-us':
-        driver.get('https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/login')
+        driver.get('https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/login')
         cookie = {
             'domain': 'development-na-yeti.demandware.net',
             'httpOnly': False,
@@ -43,11 +43,11 @@ def setup(request):
         lp = LoginPage(driver)
         lp.login('qa_dev000@yeti.com', 'T3ster#!@')
 
-        product_url = 'https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        product_url = 'https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
 
     elif env_name == 'stg-us':
-        driver.get('https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/login')
+        driver.get('https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/login')
         cookie = {
             'domain': 'staging-na-yeti.demandware.net',
             'httpOnly': False,
@@ -63,7 +63,7 @@ def setup(request):
         lp = LoginPage(driver)
         lp.login('jason.pacitti@yeti.com', 'T3ster@!')
 
-        product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/en_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        product_url = 'https://Storefront:Yeti2017@staging-na-yeti.demandware.net/s/Yeti_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
 
     elif env_name == 'prod-us':
