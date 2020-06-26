@@ -53,7 +53,7 @@ class CustomizePage():
     def selectCustomLogo(self):
         filename = '20.bmp'
         file_path = os.path.join(os.getcwd(), filename)
-        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-logo"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-autoimage"]').click()
         self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
         self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]').click()
         time.sleep(2)
