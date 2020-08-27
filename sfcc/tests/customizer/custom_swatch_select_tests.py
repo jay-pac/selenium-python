@@ -21,6 +21,7 @@ class TestCustomSwatchSelect():
         custom.selectCustomMono()
         custom.clickApproval()
         custom.clickAddToCart()
+        custom.clickConfirmButton()
 
         pdp.clickMiniCart()
         checkout.shippingBtn()

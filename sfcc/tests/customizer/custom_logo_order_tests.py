@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from sfcc.pages.customize_page import CustomizePage
 from sfcc.pages.product_page import ProductPage
 from sfcc.pages.checkout_page import CheckoutPage
+import time
 import pytest
 
 
@@ -19,6 +20,7 @@ class TestCustomLogoOrder():
         custom.selectCustomLogo()
         custom.clickApproval()
         custom.clickAddToCart()
+        custom.clickConfirmButton()
 
         pdp.clickMiniCart()
 

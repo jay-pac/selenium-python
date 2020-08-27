@@ -20,6 +20,7 @@ class TestCustomTextOrder():
         custom.selectCustomText()
         custom.clickApproval()
         custom.clickAddToCart()
+        custom.clickConfirmButton()
 
         pdp.clickMiniCart()
         checkout.shippingBtn()

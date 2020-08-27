@@ -17,11 +17,14 @@ class TestCustomOrderFrontBackOrder():
 
         custom.pdpClickCustomButton()
         custom.customModal()
-        custom.selectCustomMono()
+        # custom.selectCustomMono()
+        custom.selectCustomText()
+        # custom.selectCustomLogo()
         custom.clickBackDesign()
         custom.selectCustomMono()
         custom.clickApproval()
         custom.clickAddToCart()
+        custom.clickConfirmButton()
 
         pdp.clickMiniCart()
         checkout.shippingBtn()
