@@ -10,7 +10,7 @@ def pytest_addoption(parser):
         "--browser_name", action="store", default="chrome"
     )
     parser.addoption(
-        "--env_name", action="store", default="dev-us"
+        "--env_name", action="store", default="dev10-us"
     )
 
 
@@ -44,6 +44,26 @@ def setup(request):
         lp.login('qa_dev000@yeti.com', 'T3ster#!@')
 
         product_url = 'https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
+        driver.get(product_url)
+
+    elif env_name == 'dev10-us':
+        driver.get('https://Storefront:Yeti2017@dev10-na-yeti.demandware.net/s/Yeti_US/login')
+        cookie = {
+            'domain': 'dev10-na-yeti.demandware.net',
+            'httpOnly': False,
+            'name': 'consent-accepted',
+            'path': '/',
+            'secure': False,
+            'value': 'true'}
+        driver.add_cookie(cookie)
+        driver.refresh()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
+
+        lp = LoginPage(driver)
+        lp.login('qa_dev1001@yeti.com', 'T3ster@!')
+
+        product_url = 'https://Storefront:Yeti2017@dev10-na-yeti.demandware.net/s/Yeti_US/drinkware/rambler-20-oz-tumbler/YRAM20.html'
         driver.get(product_url)
 
     elif env_name == 'stg-us':
