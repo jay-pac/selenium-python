@@ -26,7 +26,7 @@ def setup(request):
 
     env_name = request.config.getoption("env_name")
     if env_name == "dev-us":
-        driver.get('https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/en_US/login')
+        driver.get('https://Storefront:Yeti2017@development-na-yeti.demandware.net/s/Yeti_US/login')
         cookie = {
             'domain': 'development-na-yeti.demandware.net',
             'httpOnly': False,
