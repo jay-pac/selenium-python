@@ -21,6 +21,7 @@ class CustomizePage():
     _swatch = '[data-yti={color}]'
     _back_design = '[data-yti="design-back"]'
     _custom_logo = '[data-yti="upload-logo"]'
+    _confirm_modal = '//button[@class="block-right"]'
 
     def pdpClickCustomButton(self):
         time.sleep(2)
@@ -51,12 +52,10 @@ class CustomizePage():
         self.driver.find_element(By.CSS_SELECTOR, '[data-name="Built for the Wild - Classic"]').click()
 
     def selectCustomLogo(self):
-        filename = '20.bmp'
+        filename = 'homer-animated.gif'
         file_path = os.path.join(os.getcwd(), filename)
         self.driver.find_element(By.CSS_SELECTOR, '[data-yti="upload-autoimage"]').click()
         self.driver.find_element(By.NAME, 'upload-image').send_keys(file_path)
-        self.driver.find_element(By.CSS_SELECTOR, '[data-ui="confirm-image-rights"]').click()
-        time.sleep(2)
 
     def clickBackDesign(self):
         self.driver.find_element(By.CSS_SELECTOR, self._back_design).click()
@@ -65,12 +64,18 @@ class CustomizePage():
         approval = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self._approve)))
         approval.click()
-        # self.driver.find_element(By.CSS_SELECTOR, self._approve).click()
 
     def clickAddToCart(self):
         add_to_cart_btn = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self._add_to_cart)))
         add_to_cart_btn.click()
+        # This needs to be here for the custom design
+        # self.driver.switch_to.default_content()
+
+    def clickConfirmButton(self):
+        confirm_btn = WebDriverWait(self.driver, 20, poll_frequency=0.5).until(
+            EC.element_to_be_clickable((By.XPATH, self._confirm_modal)))
+        confirm_btn.click()
         self.driver.switch_to.default_content()
 
     def addCustomSwatches(self, color='color-black'):
